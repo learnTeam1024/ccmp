@@ -10,6 +10,11 @@ import javax.annotation.Resource;
 public class EmployeeServiceImpl implements EmployeeService  {
  @Resource
  private EmployeeDao employeeDao;
+
+    public boolean login(String username, String password) {
+        return true;
+    }
+
     public ResultVO findAll() {
         return null;
     }

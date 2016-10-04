@@ -10,6 +10,14 @@ import org.springframework.stereotype.Service;
 
 public interface EmployeeService {
 
+    /**
+     * 登录
+     * @param username 用户名
+     * @param password 密码
+     * @return true通过 false验证不通过
+     */
+    boolean login(String username, String password);
+
 public ResultVO findAll();
 
 }

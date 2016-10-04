@@ -1,6 +1,6 @@
 package com.pro.bs.user.controller;
 
-import com.pro.bs.service.UserService;
+import com.pro.bs.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class LoginController {
 
     @Resource
-    private UserService userService;
+    private EmployeeService employeeService;
 
     /**
      * 登录
@@ -24,7 +24,7 @@ public class LoginController {
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     public String login(Model model){
 
-        userService.login("admin","123456");
+        employeeService.login("admin","123456");
 
         model.addAttribute("message","hello");
         return "main";

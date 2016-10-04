@@ -1,2 +1,20 @@
-*.iml
+# Maven
+target/
+
+# Eclipse
+.settings/
+.classpath
+.project
+*/.project
+*/.classpath
+
+# Intellij
 .idea/*
+*.iml
+*.iws
+
+# log
+logs/*
+*.log
+
+Mybatis_generate.xml
