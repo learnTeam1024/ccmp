@@ -11,8 +11,9 @@ public class EmployeeServiceImpl implements EmployeeService  {
  @Resource
  private EmployeeDao employeeDao;
 
+    @Override
     public boolean login(String username, String password) {
-        return true;
+        return false;
     }
 
     public ResultVO findAll() {

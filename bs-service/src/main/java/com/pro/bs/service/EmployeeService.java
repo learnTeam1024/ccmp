@@ -18,6 +18,6 @@ public interface EmployeeService {
      */
     boolean login(String username, String password);
 
-public ResultVO findAll();
+    ResultVO findAll();
 
 }
