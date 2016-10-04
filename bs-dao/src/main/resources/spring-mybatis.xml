@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+
+    <!-- 定义DataSource -->
+    <bean id="dbcp"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="username" value="root">
+        </property>
+        <property name="password" value="123456">
+        </property>
+        <property name="driverClassName"
+                  value="com.mysql.jdbc.Driver">
+        </property>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3366/szq">
+        </property>
+    </bean>
+    <!-- 定义SqlSessionFactoryBean -->
+    <bean id="ssf"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定dataSource -->
+        <property name="dataSource" ref="dbcp">
+        </property>
+        <!-- 指定SQL定义文件 -->
+        <property name="mapperLocations"
+                  value="classpath:mapper/EmployeeMapper.xml">
+        </property>
+    </bean>
+
+    <!-- 定义MapperScanner -->
+    <bean id="mapperScanner"
+          class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 指定Mapper接口 -->
+        <property name="basePackage"
+                  value="com.pro.bs.dao">
+        </property>
+        <!-- 指定SqlSessionFactory,省略 -->
+    </bean>
+
+</beans>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.pro.bs.dao">
+        <select id="findAll" resultType="list">
+        SELECT  * from employee_list;
+        </select>
+
+        <insert id="addEmp" parameterType="com.pro.bs.dao.EmployeeVO">
+                INSERT  INTO  employee_list VALUES (#{employee_id},#{employee_name},#{employee_gender},
+                #{employee_phonenumber},#{employee_email});
+        </insert>
+
+
+
+
+</mapper>
