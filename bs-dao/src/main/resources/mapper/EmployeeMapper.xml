@@ -7,8 +7,9 @@
         </select>
 
         <insert id="addEmp" parameterType="com.pro.bs.dao.EmployeeVO">
-                INSERT  INTO  employee_list VALUES (#{employee_id},#{employee_name},#{employee_gender},
-                #{employee_phonenumber},#{employee_email});
+                INSERT  INTO  employee_list VALUES (employee_id=#{employee_id},employee_name=#{employee_name},
+                employee_gender=#{employee_gender},
+                employee_phonenumber=#{employee_phonenumber},employee_email=#{employee_email});
         </insert>
 
 

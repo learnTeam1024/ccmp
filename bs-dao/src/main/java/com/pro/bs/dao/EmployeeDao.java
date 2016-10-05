@@ -8,8 +8,9 @@ import java.util.List;
  * Created by hzq on 2016/10/4.
  */
 public interface EmployeeDao {
+    void test();
     //查询所有用户
-    List findAll();
+    List   findAll();
     //增加用户
     void addEmp(EmployeeVO emp);
     //修改用户信息

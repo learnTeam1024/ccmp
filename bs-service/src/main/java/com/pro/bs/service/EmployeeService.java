@@ -1,7 +1,10 @@
 package com.pro.bs.service;
 
+import com.pro.bs.vo.EmployeeVO;
 import com.pro.bs.vo.ResultVO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 用户service
@@ -18,6 +21,6 @@ public interface EmployeeService {
      */
     boolean login(String username, String password);
 
-    ResultVO findAll();
+    List<EmployeeVO> findAll();
 
 }
