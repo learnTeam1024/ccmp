@@ -118,4 +118,15 @@ public class UserController {
         return result;
 
     }
+    /**
+     * 修改用户
+     */
+    @RequestMapping(value = "/user/goFormPage.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String updateUser(EmployeeModel employee){
+        int sq=employeeService.updateUser(employee);
+
+        return "redirect:/user/list.do";
+
+    }
 }
