@@ -20,7 +20,8 @@
     <parameterMap id="dataParam" type="com.pro.bs.model.EmployeeModel"/>
 
         <insert id="addEmp" parameterType="com.pro.bs.dao.EmployeeVO">
-                INSERT  INTO  employee_list VALUES (#{employee_id},#{employee_name},
+                INSERT  INTO  employee_list(employee_id,employee_name,employee_gender,employee_phonenumber,
+                employee_email) VALUES (#{employee_id},#{employee_name},
                 #{employee_gender},#{employee_phonenumber},#{employee_email});
         </insert>
     <!--验证登录密码-->
@@ -48,10 +49,9 @@
 
     <!--新增用户-->
     <insert id="createUser" parameterMap="dataParam">
-        INSERT INTO employee VALUES (id = #{id}, userName = #{userName}, realName = #{realName},
-                                     gender = #{gender}, age = #{age}, phoneNumber = #{phoneNumber},
-                                     isDelete = #{isDelete},
-                                     createTime = #{createTime}, updateTime = #{updateTime}, deleteTime = #{deleteTime})
+        INSERT INTO employee (id,user_name,real_name,gender,age,user_phone,createTime)VALUES (#{id},
+         #{userName}, #{realName}, #{gender},  #{age}, #{phoneNumber},
+                                     #{createTime})
     </insert>
 
 
