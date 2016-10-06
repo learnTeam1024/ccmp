@@ -53,16 +53,16 @@
 
 
     <!--新增用户-->
-    <insert id="createUser" parameterMap="dataParam">
-        INSERT INTO employee (id,user_name,real_name,gender,age,user_phone,createTime)VALUES (#{id},
-         #{userName}, #{realName}, #{gender},  #{age}, #{phoneNumber},
-                                     #{createTime})
+    <insert id="createUser" parameterMap="dataParam" keyProperty="empId">
+        INSERT INTO employee (user_name,real_name,gender,age,user_phone,create_time,update_time)VALUES (
+         #{userName}, #{realName}, #{gender},  #{age}, #{phoneNumber},now(),now())
     </insert>
 
 
     <!--更改用户信息-->
-    <update id="updateUser" parameterMap="dataParam">
-        UPDATE employee SET real_name=#{realName}
+    <update id="updateUser" parameterMap="dataParam" keyProperty="empId">
+        UPDATE employee SET (user_name=#{realName},gender=#{gender},age=#{age},user_phone={phoneNumber},
+        updateTime=now())
 
         Where id=#{empId}
     </update>
