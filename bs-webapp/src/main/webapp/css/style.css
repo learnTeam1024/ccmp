@@ -152,9 +152,9 @@ width: 100%;
 .sideMenu h3.on { background: url('../images/side_h3_on.gif') 0px 0px no-repeat; }
 .sideMenu ul{ display:none; /* 默认都隐藏 */ }
 .sideMenu ul li{
+    cursor: pointer;
 	height: 31px;
-	line-height: 31px;
-	font:normal 13px/31px "Microsoft YaHei";
+    font:normal 13px/31px "Microsoft YaHei";
 	padding-left: 50px;
 	background: url('../images/side_li.gif') 40px 13px no-repeat;
 }

@@ -27,6 +27,6 @@ public class LoginController {
         employeeService.login("admin","123456");
 
         model.addAttribute("message","hello");
-        return "main";
+        return "index";
     }
 }

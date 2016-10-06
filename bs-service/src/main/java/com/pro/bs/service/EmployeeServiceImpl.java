@@ -1,7 +1,7 @@
 package com.pro.bs.service;
 
-import com.pro.bs.bo.EmployeeBO;
 import com.pro.bs.dao.EmployeeDao;
+import com.pro.bs.model.EmployeeModel;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,22 +13,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean login(String username, String password) {
-        employeeDao.verifyPwd(username, password);
-        return false;
+        return employeeDao.verifyPwd(username, password) == 1;
     }
 
     @Override
-    public List<EmployeeBO> findUserByCondition(EmployeeBO employeeBO) {
+    public List<EmployeeModel> findUserByCondition(EmployeeModel employeeBO) {
         return null;
     }
 
     @Override
-    public Integer createUser(EmployeeBO employeeBO) {
+    public Integer createUser(EmployeeModel employeeBO) {
         return null;
     }
 
     @Override
-    public Integer updateUser(EmployeeBO employeeBO) {
+    public Integer updateUser(EmployeeModel employeeBO) {
         return null;
     }
 

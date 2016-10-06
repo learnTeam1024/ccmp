@@ -13,7 +13,13 @@ import java.util.List;
 public interface EmployeeDao {
 
 
-    Integer verifyPwd(@Param("userName") String userName, @Param("password") String password);
+    /**
+     * 验证登录
+     * @param userName 账户
+     * @param userPwd  密码
+     * @return 1 验证通过 0验证失败
+     */
+    Integer verifyPwd(@Param("userName") String userName, @Param("userPwd") String userPwd);
 
     /**
      * 查询用户信息
