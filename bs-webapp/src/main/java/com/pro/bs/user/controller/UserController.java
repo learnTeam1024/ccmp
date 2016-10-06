@@ -73,7 +73,7 @@ public class UserController {
 
     /**
      * 保存用户信息
-     * @param model
+     * @param
      * @return
      */
     @RequestMapping(value = "/save.do", method = RequestMethod.POST)
@@ -81,20 +81,25 @@ public class UserController {
         if (employee == null) {
             System.out.println("hello");
         }
+       Integer ss= employeeService.createUser(employee);
+        if (ss==null){
+            System.out.println("hello");
+        }
         return "redirect:/user/list.do";
     }
 
     /**
      * 删除用户
-     * @param model
+     * @param
      * @return
      */
     @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
     @ResponseBody
-    public PlainResult<Boolean> deleteUser(EmployeeParam employee){
-        PlainResult<Boolean> result = new PlainResult<>();
+    public PlainResult<String> deleteUser(EmployeeParam employee){
+        PlainResult<String> result = new PlainResult<>();
         System.out.println(employee.getEmpId());
-        result.setData(true);
+        result.setData("true");
         return result;
+
     }
 }

@@ -2,7 +2,9 @@ package com.pro.bs.service;
 
 
 import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeParam;
+
 
 import java.util.List;
 
@@ -20,7 +22,6 @@ public interface EmployeeService {
      * @return true通过 false验证不通过
      */
     boolean login(String username, String password);
-
     /**
      * 根据条件查找用户
      * @return List<EmployeeModel>用户信息

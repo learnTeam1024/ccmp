@@ -14,6 +14,7 @@ import java.util.List;
 public interface EmployeeDao {
 
 
+
     /**
      * 验证登录
      * @param userName 账户
@@ -55,4 +56,5 @@ public interface EmployeeDao {
      * @return 更改条目数
      */
     Integer deleteUser(Integer empId);
+
 }

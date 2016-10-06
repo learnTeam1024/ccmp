@@ -2,6 +2,7 @@ package com.pro.bs.service;
 
 import com.alibaba.fastjson.JSON;
 import com.pro.bs.dao.EmployeeDao;
+import org.springframework.stereotype.Service;
 import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeParam;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+@Service("employeeService")
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -18,12 +20,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Resource
     private EmployeeDao employeeDao;
 
-    @Override
+
     public boolean login(String username, String password) {
+
         return employeeDao.verifyPwd(username, password) == 1;
     }
 
-    @Override
+
     public List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam) {
 
         List<EmployeeModel> userList;
@@ -47,19 +50,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         return totalSize == null ? 0 : totalSize;
     }
 
-    @Override
+
     public Integer createUser(EmployeeModel employeeBO) {
-        return null;
+        employeeDao.createUser(employeeBO);
+
+        return employeeBO.getEmpId();
     }
 
-    @Override
+
     public Integer updateUser(EmployeeModel employeeBO) {
-        return null;
+        Integer a = employeeDao.updateUser(employeeBO);
+        return a;
+
     }
 
-    @Override
+
     public Integer deleteUser(Integer empId) {
-        return null;
+        Integer a = employeeDao.deleteUser(empId);
+        return a;
     }
 
 }

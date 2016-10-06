@@ -26,6 +26,8 @@
     </select>
 
     <!--用户查询 超级查询-->
+
+
     <select id="findUserByCondition" resultMap="BaseResultMap" parameterMap="queryParam">
       SELECT * FROM employee WHERE is_delete=0
         <if test="realName != null">
@@ -49,12 +51,12 @@
         </if>
     </select>
 
+
     <!--新增用户-->
     <insert id="createUser" parameterMap="dataParam">
-        INSERT INTO employee VALUES (id = #{id}, userName = #{userName}, realName = #{realName},
-                                     gender = #{gender}, age = #{age}, phoneNumber = #{phoneNumber},
-                                     isDelete = #{isDelete},
-                                     createTime = #{createTime}, updateTime = #{updateTime}, deleteTime = #{deleteTime})
+        INSERT INTO employee (id,user_name,real_name,gender,age,user_phone,createTime)VALUES (#{id},
+         #{userName}, #{realName}, #{gender},  #{age}, #{phoneNumber},
+                                     #{createTime})
     </insert>
 
 
@@ -70,6 +72,7 @@
     <update id="deleteUser" parameterType="integer">
         UPDATE employee SET is_delete=1, delete_time=now() WHERE id=#{empId}
     </update>
+
 
 
 </mapper>
