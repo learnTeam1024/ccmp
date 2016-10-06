@@ -2,6 +2,7 @@ package com.pro.bs.dao;
 
 import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,15 +14,20 @@ import java.util.List;
 public interface EmployeeDao {
 
 
-    Integer verifyPwd(String userName, String password);
 
-    Integer verifyPwd(@Param("userName") String userName, @Param("password") String password);
+    /**
+     * 验证登录
+     * @param userName 账户
+     * @param userPwd  密码
+     * @return 1 验证通过 0验证失败
+     */
+    Integer verifyPwd(@Param("userName") String userName, @Param("userPwd") String userPwd);
 
     /**
      * 查询用户信息
      * @return List<EmployeeModel>
      */
-    List<EmployeeModel> findUserByCondition(EmployeeModel queryBO);
+    List<EmployeeModel> findUserByCondition(EmployeeParam queryParam);
 
     /**
      * 创建用户

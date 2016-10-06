@@ -1,7 +1,10 @@
 package com.pro.bs.service;
 
 
-import com.pro.bs.bo.EmployeeBO;
+import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
+
 
 import java.util.List;
 
@@ -19,28 +22,25 @@ public interface EmployeeService {
      * @return true通过 false验证不通过
      */
     boolean login(String username, String password);
-
-    List<EmployeeVO> findAll();
-
     /**
      * 根据条件查找用户
-     * @return
+     * @return List<EmployeeModel>用户信息
      */
-    List<EmployeeBO> findUserByCondition(EmployeeBO employeeBO);
+    List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam);
 
     /**
      * 创建用户
-     * @param employeeBO
+     * @param employeeModel
      * @return
      */
-    Integer createUser(EmployeeBO employeeBO);
+    Integer createUser(EmployeeModel employeeModel);
 
     /**
      * 更新用户
-     * @param employeeBO
+     * @param employeeModel
      * @return
      */
-    Integer updateUser(EmployeeBO employeeBO);
+    Integer updateUser(EmployeeModel employeeModel);
 
     /**
      * 逻辑删除用户

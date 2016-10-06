@@ -1,61 +1,49 @@
 package com.pro.bs.service;
 
-import com.pro.bs.bo.EmployeeBO;
 import com.pro.bs.dao.EmployeeDao;
-<<<<<<< HEAD
-
-import com.pro.bs.vo.EmployeeVO;
-import com.pro.bs.vo.ResultVO;
-
 import org.springframework.stereotype.Service;
-=======
->>>>>>> 709765a7f2e12b37450364db71624af2d262e3c1
+import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
 
 import javax.annotation.Resource;
 import java.util.List;
-
-<<<<<<< HEAD
 @Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService  {
- @Resource
- private EmployeeDao employeeDao;
-=======
+
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Resource
     private EmployeeDao employeeDao;
->>>>>>> 709765a7f2e12b37450364db71624af2d262e3c1
 
 
     public boolean login(String username, String password) {
-        employeeDao.verifyPwd(username, password);
-        return false;
+
+        return employeeDao.verifyPwd(username, password) == 1;
     }
 
 
-    public List findAll() {
-        List<EmployeeVO> list = employeeDao.findAll();
+    public List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam) {
+        List<EmployeeModel> list = employeeDao.findUserByCondition(employeeParam);
         return list;
     }
-    @Override
-    public List<EmployeeBO> findUserByCondition(EmployeeBO employeeBO) {
-        return null;
+
+
+    public Integer createUser(EmployeeModel employeeBO) {
+        employeeDao.createUser(employeeBO);
+
+        return employeeBO.getEmpId();
     }
 
-    @Override
-    public Integer createUser(EmployeeBO employeeBO) {
-        return null;
-    }
 
-    @Override
-    public Integer updateUser(EmployeeBO employeeBO) {
-        return null;
+    public Integer updateUser(EmployeeModel employeeBO) {
+        Integer a = employeeDao.updateUser(employeeBO);
+        return a;
 
     }
 
-    @Override
+
     public Integer deleteUser(Integer empId) {
-        return null;
+        Integer a = employeeDao.deleteUser(empId);
+        return a;
     }
 
 }

@@ -5,10 +5,10 @@ import com.pro.bs.query.PageQueryModel;
 import java.util.Date;
 
 /**
- * 用户Model
+ * 用户查询参数
  * Created by hzq on 2016/10/4.
  */
-public class EmployeeModel{
+public class EmployeeParam extends PageQueryModel {
     /**
      *主键Id
      */
@@ -38,15 +38,6 @@ public class EmployeeModel{
      * 性别
      */
     private Integer gender;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDelete;
-
-    private Date createTime;
-    private Date updateTime;
-    private Date deleteTime;
 
 
     public Integer getEmpId() {
@@ -105,35 +96,4 @@ public class EmployeeModel{
         this.gender = gender;
     }
 
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Date getDeleteTime() {
-        return deleteTime;
-    }
-
-    public void setDeleteTime(Date deleteTime) {
-        this.deleteTime = deleteTime;
-    }
 }
