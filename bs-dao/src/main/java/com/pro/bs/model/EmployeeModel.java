@@ -1,22 +1,16 @@
-package com.pro.bs.vo;
-
-import com.pro.bs.query.PageQueryVO;
+package com.pro.bs.model;
 
 import java.util.Date;
 
 /**
- * 用户VO
+ * 用户Model
  * Created by hzq on 2016/10/4.
  */
-public class EmployeeVO extends PageQueryVO{
+public class EmployeeModel{
     /**
      *主键Id
      */
     private Integer empId;
-    /**
-     * 员工编号
-     */
-    private String empNo;
     /**
      * 用户登录名
      */
@@ -50,6 +44,8 @@ public class EmployeeVO extends PageQueryVO{
 
     private Date createTime;
     private Date updateTime;
+    private Date deleteTime;
+
 
     public Integer getEmpId() {
         return empId;
@@ -73,38 +69,6 @@ public class EmployeeVO extends PageQueryVO{
 
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
-    }
-
-    public String getEmpNo() {
-        return empNo;
-    }
-
-    public void setEmpNo(String empNo) {
-        this.empNo = empNo;
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public Integer getAge() {
@@ -131,11 +95,43 @@ public class EmployeeVO extends PageQueryVO{
         this.realName = realName;
     }
 
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
     public Integer getIsDelete() {
         return isDelete;
     }
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getDeleteTime() {
+        return deleteTime;
+    }
+
+    public void setDeleteTime(Date deleteTime) {
+        this.deleteTime = deleteTime;
     }
 }
