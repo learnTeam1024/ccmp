@@ -1,53 +1,141 @@
 package com.pro.bs.vo;
 
+import com.pro.bs.query.PageQueryVO;
+
+import java.util.Date;
+
 /**
- * 用户dao
+ * 用户VO
  * Created by hzq on 2016/10/4.
  */
-public class EmployeeVO{
-        private int employee_id;
-        private String employee_name;
-        private String employee_gender;
-        private double employee_phonenumber;
-        private  String getEmployee_email;
+public class EmployeeVO extends PageQueryVO{
+    /**
+     *主键Id
+     */
+    private Integer empId;
+    /**
+     * 员工编号
+     */
+    private String empNo;
+    /**
+     * 用户登录名
+     */
+    private String userName;
+    /**
+     * 用户密码
+     */
+    private String userPwd;
 
-        public int getEmployee_id() {
-            return employee_id;
-        }
+    /**
+     * 年龄
+     */
+    private Integer age;
+    /**
+     * 手机号
+     */
+    private String phoneNumber;
+    /**
+     * 姓名
+     */
+    private String realName;
+    /**
+     * 性别
+     */
+    private Integer gender;
 
-        public void setEmployee_id(int employee_id) {
-            this.employee_id = employee_id;
-        }
+    /**
+     * 是否删除
+     */
+    private Integer isDelete;
 
-        public String getEmployee_name() {
-            return employee_name;
-        }
+    private Date createTime;
+    private Date updateTime;
 
-        public void setEmployee_name(String employee_name) {
-            this.employee_name = employee_name;
-        }
+    public Integer getEmpId() {
+        return empId;
+    }
 
-        public String getEmployee_gender() {
-            return employee_gender;
-        }
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
+    }
 
-        public void setEmployee_gender(String employee_gender) {
-            this.employee_gender = employee_gender;
-        }
+    public String getUserName() {
+        return userName;
+    }
 
-        public double getEmployee_phonenumber() {
-            return employee_phonenumber;
-        }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-        public void setEmployee_phonenumber(double employee_phonenumber) {
-            this.employee_phonenumber = employee_phonenumber;
-        }
+    public String getUserPwd() {
+        return userPwd;
+    }
 
-        public String getGetEmployee_email() {
-            return getEmployee_email;
-        }
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
+    }
 
-        public void setGetEmployee_email(String getEmployee_email) {
-            this.getEmployee_email = getEmployee_email;
-        }
+    public String getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(String empNo) {
+        this.empNo = empNo;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 }
