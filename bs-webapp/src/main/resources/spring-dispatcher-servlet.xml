@@ -6,10 +6,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <!--<mvc:default-servlet-handler/>-->
-    <!--<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />-->
     <context:component-scan base-package="com.pro.bs.**.controller"/>
     <mvc:annotation-driven/>
+
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
     <!-- ViewResolver -->
@@ -24,4 +23,7 @@
         <property name="maxUploadSize" value="10485760"/>
         <property name="maxInMemorySize" value="40960"/>
     </bean>
+
+    <!--加载spring配置文件-->
+    <import resource="classpath*:spring/*" />
 </beans>

@@ -2,9 +2,6 @@ package com.pro.bs.service;
 
 
 import com.pro.bs.bo.EmployeeBO;
-import com.pro.bs.vo.EmployeeVO;
-import com.pro.bs.vo.ResultVO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

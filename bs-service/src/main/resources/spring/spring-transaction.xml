@@ -13,8 +13,7 @@
     <!-- 定义事务管理bean -->
     <bean id="txManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dbcp">
-        </property>
+        <property name="dataSource" ref="dataSource" />
     </bean>
     <!-- 开启事务注解配置@transactional -->
     <tx:annotation-driven
