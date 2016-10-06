@@ -28,6 +28,12 @@ public interface EmployeeService {
     List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam);
 
     /**
+     * 根据条件查找用户数量
+     * @return 用户数量
+     */
+    Integer countUserByCondition(EmployeeParam employeeParam);
+
+    /**
      * 创建用户
      * @param employeeModel
      * @return

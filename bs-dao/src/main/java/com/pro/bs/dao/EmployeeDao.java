@@ -29,6 +29,13 @@ public interface EmployeeDao {
     List<EmployeeModel> findUserByCondition(EmployeeParam queryParam);
 
     /**
+     * 查询用户数
+     * @param employeeParam 查询条件
+     * @return 用户总数
+     */
+    Integer countUserByCondition(EmployeeParam employeeParam);
+
+    /**
      * 创建用户
      * @param employeeModel 用户信息
      */

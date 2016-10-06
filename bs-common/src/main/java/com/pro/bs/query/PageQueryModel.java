@@ -1,5 +1,7 @@
 package com.pro.bs.query;
 
+import com.pro.bs.constans.GlobalConstant;
+
 /**
  * 分页查询
  */
@@ -15,12 +17,16 @@ public class PageQueryModel {
      */
     private int startRow;
 
+
     /**
      * 每页大小
      */
-    private int pageSize = 5;
+    private int pageSize;
 
     public int getPageNo() {
+        if (pageNo < 1){
+            pageNo = 1;
+        }
         return pageNo;
     }
 
@@ -29,15 +35,18 @@ public class PageQueryModel {
     }
 
     public int getStartRow() {
-        return startRow;
-    }
-
-    public void setStartRow(int startRow) {
-        this.startRow = startRow;
+        return this.getPageSize() * this.getPageNo();
     }
 
     public int getPageSize() {
+        if (pageSize == 0) {
+            this.pageSize = GlobalConstant.NORAML_PAGE_SIZE;
+        }
         return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
 }

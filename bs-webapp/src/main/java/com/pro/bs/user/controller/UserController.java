@@ -2,7 +2,6 @@ package com.pro.bs.user.controller;
 
 import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeParam;
-import com.pro.bs.query.PageQueryModel;
 import com.pro.bs.result.PageResult;
 import com.pro.bs.result.PlainResult;
 import com.pro.bs.service.EmployeeService;
@@ -33,13 +32,30 @@ public class UserController {
      */
     @RequestMapping(value = "/list.do", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult<EmployeeModel> queryList(@RequestParam EmployeeParam queryParam){
+    public PageResult<EmployeeModel> queryList(@RequestParam(required = false) EmployeeParam queryParam){
+        //初始化分页信息
         if (queryParam == null) {
-            System.out.printf("111");
+            queryParam = new EmployeeParam();
         }
 
         PageResult<EmployeeModel> pageResult = new PageResult<>();
+
+        //获取符合条件的用户总数
+        Integer totalCount = employeeService.countUserByCondition(queryParam);
+        pageResult.setTotalItem(totalCount);
+
+        //如果没有符合条件的用户则直接返回
+        if (totalCount == 0) {
+            return pageResult;
+        }
+
+        //获取符合条件的用户列表
         List<EmployeeModel> employeeModels = employeeService.findUserByCondition(queryParam);
+        pageResult.setData(employeeModels);
+
+        //设置pageSize
+        pageResult.setPageSize(queryParam.getPageSize());
+
         return pageResult;
     }
 

@@ -40,11 +40,13 @@ public class PageResult<T> extends BaseResult {
     }
 
     public int getTotalPage() {
-        return totalPage;
-    }
+        int pageSize = this.getPageSize();
 
-    public void setTotalPage(int totalPage) {
-        this.totalPage = totalPage;
+        if(pageSize == 0){
+            return 0;
+        }
+
+        return (int)Math.ceil(this.getTotalItem()/ pageSize);
     }
 
     public List<T> getData() {

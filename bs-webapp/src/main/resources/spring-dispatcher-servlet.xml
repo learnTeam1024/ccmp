@@ -11,12 +11,13 @@
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
-    <!-- ViewResolver -->
+    <!-- jsp ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
 
     <!-- file upload -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -26,6 +27,7 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
-    <!--加载spring配置文件-->
+    <!--加载spring配置文件 (service,dao) -->
+    <import resource="mapping-fastjson-converter.xml" />
     <import resource="classpath*:spring/*" />
 </beans>
