@@ -13,16 +13,40 @@
 
 
     <script type="text/javascript">
-        function searchUser() {
+        $(function () {
+            loadUser();
+        });
 
+        /**
+         * 加载用户列表
+         */
+        function loadUser() {
+            //姓名
+            var realName = $('#realName').val();
+            //要查询的页码
+            var pageNo = $('#pageNo').val();
+
+            //查询的参数
+            var param = {'realName': realName, 'pageNo': pageNo};
+            $("#data_div").load('/user/list.do',param);
         }
 
         /**
          *删除用户
          */
         function deleteUser(empId) {
-            $.post('/user/delete.do',{'empId':empId},function (data) {
+            $.post('/user/delete.do',{'empId':empId},function (result) {
+                if(result == undefined || !result.success){
+                    alert("请求异常");
+                }
 
+                if(result.data){
+                    //删除成功重新加载页面
+                    loadUser();
+                    return;
+                }
+
+                alert("删除失败")
             });
         }
 
@@ -33,6 +57,7 @@
         function updateUser(empId) {
             location.href="/user/goFormPage.do?empId="+empId;
         }
+
     </script>
 </head>
 <body>
@@ -41,11 +66,10 @@
             <div class="box_border">
                 <div class="box_top"><b class="pl15">搜索</b></div>
                 <div class="box_center pt10 pb10">
-                    <form id="searchForm">
                     <table class="form_table" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td>姓名</td>
-                            <td><input type="text" name="realName" class="input-text lh25" size="10"></td>
+                            <td><input id="realName" type="text" name="realName" class="input-text lh25" size="10"></td>
                             <td>性别</td>
                             <td>
                                 <input type="radio" name="gender" value="0" checked> all
@@ -54,58 +78,19 @@
                             </td>
                         </tr>
                     </table>
-                    </form>
                 </div>
                 <div class="box_bottom pb5 pt5 pr10" style="border-top:1px solid #dadada;">
                     <div class="search_bar_btn" style="text-align:right;">
                         <input type="button" onclick="location.href = '/user/goFormPage.do' " class="ext_btn ext_btn_success" value="添 加">
-                        <input type="submit" value="查 询" class="ext_btn ext_btn_submit">
+                        <input type="button" onclick="loadUser()" value="查 询" class="ext_btn ext_btn_submit">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="table" class="mt10">
-        <div class="box span10 oh">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
-                <tr>
-                    <th width="5%">编号</th>
-                    <th width="10%">账号</th>
-                    <th width="15%">姓名</th>
-                    <th width="10%">性别</th>
-                    <th width="10%">年龄</th>
-                    <th width="15%">手机</th>
-                    <th width="15%">创建时间</th>
-                    <th width="20%">操作</th>
-                </tr>
-
-                <tr class="tr">
-                    <td>1</td>
-                    <td>aad</td>
-                    <td>aad</td>
-                    <td>aad</td>
-                    <td>aad</td>
-                    <td>aad</td>
-                    <td>aad</td>
-                    <td>
-                        <a style="cursor: pointer" onclick="updateUser()">修改</a>|<a style="cursor: pointer" onclick="deleteUser()">删除</a>
-                    </td>
-                </tr>
-
-            </table>
-            <div class="page mt10">
-                <div class="pagination">
-                    <ul>
-                        <li class="first-child"><a href="#">首页</a></li>
-                        <li class="disabled"><span>上一页</span></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">下一页</a></li>
-                        <li class="last-child"><a href="#">末页</a></li>
-                    </ul>
-                </div>
-
-            </div>
+        <div id="data_div" class="box span10 oh">
+            <%--此处load数据--%>
         </div>
     </div>
 </body>

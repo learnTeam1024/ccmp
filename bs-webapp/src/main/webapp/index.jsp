@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src  ="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -14,7 +14,9 @@
                 $("#navigate").find("li").attr("class","off");
                 $(this).attr("class","on");
 
-                $("#rightMain").attr("src", "/user/index.do");
+                //菜单地址
+                var liUrl = $(this).attr("url");
+                $("#rightMain").attr("src", liUrl);
             });
 
             $(".sideMenu").slide({
@@ -104,7 +106,7 @@
     <div id="navigate" class="sideMenu" style="margin:0 auto">
         <h3>系统管理</h3>
         <ul>
-            <li>用户管理</li>
+            <li url="/user/index.do">用户管理</li>
             <li>部门管理</li>
             <li>菜单管理</li>
             <li>角色管理</li>

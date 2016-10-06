@@ -38,9 +38,8 @@ public class UserController {
      * 查询用户
      * @param queryParam
      */
-    @RequestMapping(value = "/list.do", method = RequestMethod.GET)
-    @ResponseBody
-    public PageResult<EmployeeModel> queryList(@RequestParam(required = false) EmployeeParam queryParam){
+    @RequestMapping(value = "/list.do")
+    public String queryList(Model model, EmployeeParam queryParam){
         //初始化分页信息
         if (queryParam == null) {
             queryParam = new EmployeeParam();
@@ -48,13 +47,16 @@ public class UserController {
 
         PageResult<EmployeeModel> pageResult = new PageResult<>();
 
+        //存放页面数据
+        model.addAttribute("pageResult", pageResult);
+
         //获取符合条件的用户总数
         Integer totalCount = employeeService.countUserByCondition(queryParam);
         pageResult.setTotalItem(totalCount);
 
         //如果没有符合条件的用户则直接返回
         if (totalCount == 0) {
-            return pageResult;
+            return "userList_page";
         }
 
         //获取符合条件的用户列表
@@ -64,7 +66,7 @@ public class UserController {
         //设置pageSize
         pageResult.setPageSize(queryParam.getPageSize());
 
-        return pageResult;
+        return "userList_page";
     }
 
 
@@ -74,8 +76,16 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/goFormPage.do", method = RequestMethod.GET)
-    public String getDetail(Model model){
-        model.addAttribute("test","test123");
+    public String getDetail(Model model, @RequestParam(required = false) Integer empId){
+
+        if (empId != null) {
+            //TODO 根据empId查询详情,并设置到attribute
+
+            EmployeeModel employeeModel = new EmployeeModel();
+            employeeModel.setUserName("abc");
+            model.addAttribute("employModel", employeeModel);
+        }
+
         return "userEdit";
     }
 
@@ -93,20 +103,18 @@ public class UserController {
         if (ss==null){
             System.out.println("hello");
         }
-        return "redirect:/user/list.do";
+        return "redirect:/user/index.do";
     }
 
     /**
      * 删除用户
-     * @param
-     * @return
      */
     @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
     @ResponseBody
-    public PlainResult<String> deleteUser(EmployeeParam employee){
-        PlainResult<String> result = new PlainResult<>();
+    public PlainResult<Boolean> deleteUser(EmployeeParam employee){
+        PlainResult<Boolean> result = new PlainResult<>();
         System.out.println(employee.getEmpId());
-        result.setData("true");
+        result.setData(true);
         return result;
 
     }

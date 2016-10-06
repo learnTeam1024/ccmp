@@ -46,7 +46,7 @@ public class PageResult<T> extends BaseResult {
             return 0;
         }
 
-        return (int)Math.ceil(this.getTotalItem()/ pageSize);
+        return (int)Math.ceil(this.getTotalItem()/ (double) pageSize);
     }
 
     public List<T> getData() {

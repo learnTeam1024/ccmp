@@ -24,7 +24,7 @@
                         <tr>
                             <td class="td_right">账 号：</td>
                             <td class="">
-                                <input type="text" name="userName" class="input-text lh30" size="40">
+                                <input type="text" name="userName" value="${employModel.userName}" class="input-text lh30" size="40">
                             </td>
                         </tr>
                         <tr>

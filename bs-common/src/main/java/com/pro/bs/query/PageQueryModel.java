@@ -35,7 +35,7 @@ public class PageQueryModel {
     }
 
     public int getStartRow() {
-        return this.getPageSize() * this.getPageNo();
+        return (this.getPageNo() == 0 ? this.getPageNo() : this.getPageNo()-1) * this.getPageSize();
     }
 
     public int getPageSize() {

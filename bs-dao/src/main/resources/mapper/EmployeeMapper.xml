@@ -31,7 +31,7 @@
     <select id="findUserByCondition" resultMap="BaseResultMap" parameterMap="queryParam">
       SELECT * FROM employee WHERE is_delete=0
         <if test="realName != null">
-            AND real_name = #{realName}
+            AND real_name LIKE concat(#{realName},'%')
         </if>
         <if test="gender != null">
             AND gender = #{gender}
@@ -41,10 +41,10 @@
     </select>
 
     <!--用户数量查询 超级查询-->
-    <select id="countUserByCondition" resultMap="BaseResultMap" parameterMap="queryParam">
+    <select id="countUserByCondition" resultType="Integer" parameterMap="queryParam">
         SELECT count(1) FROM employee WHERE is_delete=0
         <if test="realName != null">
-            AND real_name = #{realName}
+            AND real_name LIKE concat(#{realName},'%')
         </if>
         <if test="gender != null">
             AND gender = #{gender}
