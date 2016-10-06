@@ -1,18 +1,20 @@
 package com.pro.bs.user.controller;
 
 import com.pro.bs.model.EmployeeModel;
-import com.pro.bs.query.PageQueryBO;
+import com.pro.bs.model.EmployeeParam;
+import com.pro.bs.query.PageQueryModel;
+import com.pro.bs.result.PageResult;
 import com.pro.bs.result.PlainResult;
 import com.pro.bs.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 用户管理controller
@@ -28,17 +30,17 @@ public class UserController {
     /**
      * 查询用户
      * @param queryParam
-     * @return
      */
     @RequestMapping(value = "/list.do", method = RequestMethod.GET)
     @ResponseBody
-    public PageQueryBO<EmployeeModel> queryList(@RequestParam EmployeeModel queryParam){
+    public PageResult<EmployeeModel> queryList(@RequestParam EmployeeParam queryParam){
         if (queryParam == null) {
             System.out.printf("111");
         }
 
-        PageQueryBO<EmployeeModel> pageQueryBO = new PageQueryBO<>();
-        return pageQueryBO;
+        PageResult<EmployeeModel> pageResult = new PageResult<>();
+        List<EmployeeModel> employeeModels = employeeService.findUserByCondition(queryParam);
+        return pageResult;
     }
 
 
@@ -73,7 +75,7 @@ public class UserController {
      */
     @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
     @ResponseBody
-    public PlainResult<Boolean> deleteUser(EmployeeModel employee){
+    public PlainResult<Boolean> deleteUser(EmployeeParam employee){
         PlainResult<Boolean> result = new PlainResult<>();
         System.out.println(employee.getEmpId());
         result.setData(true);

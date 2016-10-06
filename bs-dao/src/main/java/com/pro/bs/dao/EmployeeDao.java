@@ -2,6 +2,7 @@ package com.pro.bs.dao;
 
 import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface EmployeeDao {
      * 查询用户信息
      * @return List<EmployeeModel>
      */
-    List<EmployeeModel> findUserByCondition(EmployeeModel queryBO);
+    List<EmployeeModel> findUserByCondition(EmployeeParam queryParam);
 
     /**
      * 创建用户

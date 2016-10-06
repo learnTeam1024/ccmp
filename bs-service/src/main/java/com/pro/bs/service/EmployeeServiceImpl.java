@@ -2,6 +2,7 @@ package com.pro.bs.service;
 
 import com.pro.bs.dao.EmployeeDao;
 import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -17,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeModel> findUserByCondition(EmployeeModel employeeBO) {
+    public List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam) {
         return null;
     }
 

@@ -2,6 +2,7 @@ package com.pro.bs.service;
 
 
 import com.pro.bs.model.EmployeeModel;
+import com.pro.bs.model.EmployeeParam;
 
 import java.util.List;
 
@@ -22,23 +23,23 @@ public interface EmployeeService {
 
     /**
      * 根据条件查找用户
-     * @return
+     * @return List<EmployeeModel>用户信息
      */
-    List<EmployeeModel> findUserByCondition(EmployeeModel employeeBO);
+    List<EmployeeModel> findUserByCondition(EmployeeParam employeeParam);
 
     /**
      * 创建用户
-     * @param employeeBO
+     * @param employeeModel
      * @return
      */
-    Integer createUser(EmployeeModel employeeBO);
+    Integer createUser(EmployeeModel employeeModel);
 
     /**
      * 更新用户
-     * @param employeeBO
+     * @param employeeModel
      * @return
      */
-    Integer updateUser(EmployeeModel employeeBO);
+    Integer updateUser(EmployeeModel employeeModel);
 
     /**
      * 逻辑删除用户
