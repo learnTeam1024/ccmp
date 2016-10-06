@@ -27,6 +27,14 @@ public class UserController {
     private EmployeeService employeeService;
 
     /**
+     * 跳转到用户首页
+     */
+    @RequestMapping("/index.do")
+    public String userIndex(){
+        return "userList";
+    }
+
+    /**
      * 查询用户
      * @param queryParam
      */

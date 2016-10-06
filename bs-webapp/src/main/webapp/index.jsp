@@ -14,7 +14,7 @@
                 $("#navigate").find("li").attr("class","off");
                 $(this).attr("class","on");
 
-                $("#rightMain").attr("src", "/user/list.do");
+                $("#rightMain").attr("src", "/user/index.do");
             });
 
             $(".sideMenu").slide({
