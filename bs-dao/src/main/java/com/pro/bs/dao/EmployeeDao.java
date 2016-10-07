@@ -12,9 +12,6 @@ import java.util.List;
  * Created by hzq on 2016/10/4.
  */
 public interface EmployeeDao {
-
-
-
     /**
      * 验证登录
      * @param userName 账户
