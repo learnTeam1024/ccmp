@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pro</groupId>
-    <artifactId>bootstrap</artifactId>
+    <artifactId>ccmp</artifactId>
     <packaging>pom</packaging>
+    <description>仓储管理平台</description>
     <version>1.0-SNAPSHOT</version>
 
     <!--依赖版本管理-->
