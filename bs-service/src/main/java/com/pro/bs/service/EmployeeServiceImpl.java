@@ -2,7 +2,6 @@ package com.pro.bs.service;
 
 import com.alibaba.fastjson.JSON;
 import com.pro.bs.dao.EmployeeDao;
-import org.springframework.stereotype.Service;
 import com.pro.bs.model.EmployeeModel;
 import com.pro.bs.model.EmployeeParam;
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-@Service("employeeService")
 
 public class EmployeeServiceImpl implements EmployeeService {
 
