@@ -54,4 +54,10 @@ public interface EmployeeService {
      * @return
      */
     Integer deleteUser(Integer empId);
+
+    /**
+     * 根据Id查找用户详情
+     * @param empId 用户Id
+     */
+    EmployeeModel getUserDetail(Integer empId);
 }

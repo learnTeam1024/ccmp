@@ -70,4 +70,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return a;
     }
 
+    @Override
+    public EmployeeModel getUserDetail(Integer empId) {
+        if (empId == null) {
+            LOGGER.warn("查询用户详情id为空,程序直接返回null");
+            return null;
+        }
+
+        EmployeeModel employeeModel = null;
+        try {
+            employeeModel = employeeDao.getById(empId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employeeModel;
+    }
+
 }

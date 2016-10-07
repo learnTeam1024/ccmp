@@ -71,18 +71,15 @@ public class UserController {
 
 
     /**
-     * 用户详情
-     * @param model
-     * @return
+     * 进入用户详情界面
+     * @param empId 用户Id
      */
     @RequestMapping(value = "/goFormPage.do", method = RequestMethod.GET)
     public String getDetail(Model model, @RequestParam(required = false) Integer empId){
 
         if (empId != null) {
-            //TODO 根据empId查询详情,并设置到attribute
-
-            EmployeeModel employeeModel = new EmployeeModel();
-            employeeModel.setUserName("abc");
+            //根据empId查询详情
+            EmployeeModel employeeModel = employeeService.getUserDetail(empId);
             model.addAttribute("employModel", employeeModel);
         }
 
@@ -90,19 +87,23 @@ public class UserController {
     }
 
     /**
-     * 保存用户信息
-     * @param
-     * @return
+     * 保存用户信息(新增+修改)
      */
     @RequestMapping(value = "/save.do", method = RequestMethod.POST)
     public String saveUser(EmployeeModel employee){
         if (employee == null) {
             System.out.println("hello");
         }
-       Integer ss= employeeService.createUser(employee);
-        if (ss==null){
-            System.out.println("hello");
+
+        //TODO 增加参数校验
+
+        //判断是否传入id,如果传入则认为是修改
+        if(employee.getEmpId() != null){
+            employeeService.updateUser(employee);
+        }else {
+            employeeService.createUser(employee);
         }
+
         return "redirect:/user/index.do";
     }
 
@@ -113,20 +114,17 @@ public class UserController {
     @ResponseBody
     public PlainResult<Boolean> deleteUser(EmployeeParam employee){
         PlainResult<Boolean> result = new PlainResult<>();
-        System.out.println(employee.getEmpId());
+
+        if (employee == null || employee.getEmpId() == null) {
+            //错误码和错误信息可以自己定义,这里只是写个范例
+            result.setErrorMessage(1001,"缺失参数, empId is null");
+            return result;
+        }
+
+        employeeService.deleteUser(employee.getEmpId());
         result.setData(true);
         return result;
 
     }
-    /**
-     * 修改用户
-     */
-    @RequestMapping(value = "/user/goFormPage.do", method = RequestMethod.POST)
-    @ResponseBody
-    public String updateUser(EmployeeModel employee){
-        int sq=employeeService.updateUser(employee);
 
-        return "redirect:/user/list.do";
-
-    }
 }

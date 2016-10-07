@@ -51,6 +51,11 @@
         </if>
     </select>
 
+    <!--根据ID查询用户详情-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="integer">
+        SELECT * FROM employee WHERE id=#{empId} AND is_delete=0;
+    </select>
+
 
     <!--新增用户-->
     <insert id="createUser" parameterMap="dataParam" keyProperty="empId">

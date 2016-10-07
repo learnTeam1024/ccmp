@@ -57,4 +57,10 @@ public interface EmployeeDao {
      */
     Integer deleteUser(Integer empId);
 
+    /**
+     * 根据Id查询用户详情
+     * @param empId 用户Id
+     * @return 用户信息
+     */
+    EmployeeModel getById(Integer empId);
 }
