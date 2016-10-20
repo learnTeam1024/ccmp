@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2016/10/20
+  Time: 13:17
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -11,7 +18,7 @@
     <script type="text/javascript" src="<%=path%>/js/common.js"></script>
     <html>
     <head>
-        <title>用户管理-用户编辑</title>
+        <title>部门管理-部门编辑</title>
     </head>
 <body>
 <div id="forms" class="mt10">
@@ -19,37 +26,25 @@
         <div class="box_border">
             <div class="box_top"><b class="pl15">表单</b></div>
             <div class="box_center">
-                <form action="<c:url value="/user/save.do"/>" class="jqtransform" method="post">
+                <form action="/dept/save.do" class="jqtransform" >
                     <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td class="td_right">账 号：</td>
+                            <td class="td_right">部门 编号：</td>
                             <td class="">
-                                <input type="text" name="userName" value="${employModel.userName}" class="input-text lh30" size="40">
+                                <input type="text" name="dptNum" class="input-text lh30" size="40">
                             </td>
                         </tr>
                         <tr>
-                            <td class="td_right">姓 名：</td>
-                            <td><input type="text" name="realName" class="input-text lh30" size="40"></td>
+                            <td class="td_right">部门 名字：</td>
+                            <td><input type="text" name="dptName" class="input-text lh30" size="40"></td>
                         </tr>
                         <tr>
-                            <td class="td_right">性 别：</td>
+                            <td class="td_right">上级部门编号</td>
                             <td class="">
-                                <input type="radio" name="gender" value="1" checked> 男
-                                <input type="radio" name="gender" value="2"> 女
+                                <input  class="input-text lh30" size="40"type="text" name="supDptnum">
                             </td>
                         </tr>
-                        <tr>
-                            <td class="td_right">年龄：</td>
-                            <td>
-                                <input type="text" name="age" class="input-text lh30" size="40">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td_right">手 机：</td>
-                            <td class="">
-                                <input type="text" name="phoneNumber" class="input-text lh30" size="40">
-                            </td>
-                        </tr>
+
                         <tr>
                             <td class="td_right">&nbsp;</td>
                             <td class="">
@@ -66,3 +61,4 @@
 </div>
 </body>
 </html>
+

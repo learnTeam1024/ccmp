@@ -66,9 +66,8 @@
 
     <!--更改用户信息-->
     <update id="updateUser" parameterMap="dataParam" keyProperty="empId">
-        UPDATE employee SET (user_name=#{realName},gender=#{gender},age=#{age},user_phone={phoneNumber},
+        UPDATE employee SET (user_name=#{userName},gender=#{gender},age=#{age},user_phone={phoneNumber},
         updateTime=now())
-
         Where id=#{empId}
     </update>
 

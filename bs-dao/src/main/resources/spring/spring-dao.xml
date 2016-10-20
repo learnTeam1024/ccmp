@@ -7,4 +7,11 @@
         <property name="mapperInterface" value="com.pro.bs.dao.EmployeeDao"/>
         <property name="sqlSessionFactory" ref="sessionFactory"/>
     </bean>
+
+    <!--<bean id="deparmentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+        <!--<property name="mapperInterface" value="com.pro.bs.dao.DepartmentDao"/>-->
+<!--</bean>-->
+
+
+
 </beans>

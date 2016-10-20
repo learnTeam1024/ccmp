@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pro.bs.dao.DepartmentDao">
+
+    <resultMap id="BaseResultMap" type="com.pro.bs.model.DepartmentModel">
+        <result column="id" property="id"/>
+        <result column="dpt_num" property="dptNum"/>
+        <result column="dpt_name" property="dptName"/>
+        <result column="sup_dpt_num" property="supDptnum"/>
+        <result column="is_delete" property="isDelete"/>
+    </resultMap>
+
+    <parameterMap id="dataParam" type="com.pro.bs.model.DepartmentModel"/>
+
+    <!--部门内容查询 -->
+    <select id="findAll" resultMap="BaseResultMap" >
+        SELECT  * from department;
+    </select>
+
+    <!-- 根据单独查询-->
+    <select id="findByDptnum" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM department WHERE dpt_num=#{dptNum};
+    </select>
+    <!-- 新增部门 -->
+    <insert id="cteateDpt" parameterMap="dataParam">
+        insert into department(dpt_num,dpt_name,sup_dpt_num )  values (
+        #{dptNum},#{dptName},#{supDptnum}
+        );
+    </insert>
+
+    <!-- 更改部门信息-->
+    <update id="updateDpt" parameterMap="dataParam" keyProperty="id">
+        UPDATE  department SET (dpt_num=#{dptNum},
+        dpt_name=#{dptName},sup_dpt_num=#{supDptnum})
+        WHERE id=#{id};
+    </update>
+
+    <!--s删除部门 -->
+    <update id="deleteDpt" parameterType="int">
+        UPDATE department SET is_delete=1 WHERE id=#{id};
+    </update>
+
+
+</mapper>

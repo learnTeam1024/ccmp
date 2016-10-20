@@ -83,11 +83,13 @@
                     <div class="search_bar_btn" style="text-align:right;">
                         <input type="button" onclick="location.href = '/user/goFormPage.do' " class="ext_btn ext_btn_success" value="添 加">
                         <input type="button" onclick="loadUser()" value="查 询" class="ext_btn ext_btn_submit">
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="table" class="mt10">
         <div id="data_div" class="box span10 oh">
             <%--此处load数据--%>

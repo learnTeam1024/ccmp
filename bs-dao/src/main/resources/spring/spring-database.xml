@@ -41,9 +41,15 @@
         <property name="dataSource" ref="dataSource">
         </property>
         <!-- 指定SQL定义文件 -->
+
         <property name="mapperLocations"
                   value="classpath:mapper/*.xml">
         </property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScanner">
+        <!-- 指定Mapper接口 -->
+        <property value="com.pro.bs.dao" name="basePackage"> </property>
+        <!-- 指定SqlSessionFactory,省略 -->
     </bean>
 
 </beans>

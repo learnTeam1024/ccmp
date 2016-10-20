@@ -23,9 +23,9 @@
         <div id="login_form">
             <form action="<c:url value="/login.do"/>" method="post">
                 <div id="login_tip">
-                    用户登录&nbsp;&nbsp;UserLogin
+                    用户登录&nbsp;&nbsp;UserLogxin
                 </div>
-                <div><input type="text" class="username"></div>
+                <div><input type="tet" class="username"></div>
                 <div><input type="text" class="pwd"></div>
                 <div id="btn_area">
                     <input type="submit" name="submit" id="sub_btn" value="登&nbsp;&nbsp;录">&nbsp;&nbsp;

@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface EmployeeDao {
     /**
-     * 验证登录
+     * 验证登录、、.
      * @param userName 账户
      * @param userPwd  密码
      * @return 1 验证通过 0验证失败
