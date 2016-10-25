@@ -12,11 +12,56 @@
     <script type="text/javascript" src="<%=path%>/js/common.js"></script>
 
     <title>员工发管理-用户列表</title>
+<script>
+    function deleteDpt(id) {
 
+            $.ajax({
+                url:"/dept/delete.do",
+                type:"post",
+                data:{"id":id},
+                dataType:"json",
+                async:false,
+                success:function(result) {
+
+                        alert(result.message);
+                    $("#dep").empty();
+                    $("#dep").load('/dept/index.do');
+
+                },
+                error:function(result){
+                    alert(result.message);
+                }
+        });
+    }
+</script>
 </head>
+<body id="dep">
+<table id="dtpTable" width="100%" border="0" cellpadding="0" cellspacing="0" class="list_dpt">
+    <tr>
+        <th width="5%">编号</th>
+        <th width="10%">部门编号</th>
+        <th width="15%">部门名字</th>
+        <th width="10%">上级部门编号</th>
+    </tr>
+
+    <c:if test="${list.size() > 0}">
+    <c:forEach items="${list}" var="dpt" >
+    <tr class="tr">
+        <td>${dpt.id}</td>
+        <td>${dpt.dptNum}</td>
+        <td>${dpt.dptName}</td>
+        <td>${dpt.supDptnum}</td>
+        <td>
+            <a style="cursor: pointer" onclick="updateDpt(${dpt.id})">修改</a>|<a style="cursor: pointer" onclick="deleteDpt(${dpt.id})">删除</a>
+        </td>
+    </tr>
+    </c:forEach>
+    </c:if>
+
+</body>
 <body>
 <div id="search_dpt">
-  <tr>
+  <tr>`
       <td>部门名字</td>
       <td input id="dptName" type="text" name="dptName" class="input_dptName"></td>
       <td>部门编号</td>
