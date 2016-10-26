@@ -29,9 +29,9 @@
     </insert>
 
     <!-- 更改部门信息-->
-    <update id="updateDpt" parameterMap="dataParam" keyProperty="id">
-        UPDATE  department SET (dpt_num=#{dptNum},
-        dpt_name=#{dptName},sup_dpt_num=#{supDptnum})
+    <update id="updateDpt" parameterMap="dataParam">
+        UPDATE  department SET dpt_num=#{dptNum},
+        dpt_name=#{dptName},sup_dpt_num=#{supDptnum}
         WHERE id=#{id};
     </update>
 

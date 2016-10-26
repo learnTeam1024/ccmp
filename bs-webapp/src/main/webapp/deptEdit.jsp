@@ -28,6 +28,7 @@
             <div class="box_center">
                 <form action="/dept/save.do" class="jqtransform" >
                     <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+                       <input type="hidden" name="id" value="${id}">
                         <tr>
                             <td class="td_right">部门 编号：</td>
                             <td class="">

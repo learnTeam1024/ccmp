@@ -27,7 +27,7 @@ public interface DepartmentService {
     /**
      * 更新部门信息
      */
-    Integer updateDpt(DepartmentModel depatmentModel);
+    void updateDpt(Integer id,int dptNum,String dptName,int supDptnum);
 
     /**
      * 逻辑删除部门

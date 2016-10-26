@@ -4,6 +4,7 @@ import com.pro.bs.model.DepartmentModel;
 import com.pro.bs.result.PlainResult;
 import com.pro.bs.service.DepartmentService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,19 +31,41 @@ public class deptController {
         model.put("list",list);
         return  "deptList";
     }
-    @RequestMapping(value = "/aaa.do")
-    public String cc(ModelMap model, Integer dptNum){
-        DepartmentModel departmentModel=departmentService.findByDptnum(dptNum);
-        model.put("departmentModel",departmentModel);
-        return "aaa";
+
+    /**
+     * 跳转增添页面
+     * @return
+     */
+    @RequestMapping(value = "/aaa.do", method = RequestMethod.GET)
+    public String updateDep(Model model ,Integer id){
+             if(id==null) {
+             return "hello";
+        }
+        model.addAttribute("id",id);
+        return "deptEdit";
     }
+    /**
+     * 增添部门
+     * @param
+     * @return
+     */
 
     @RequestMapping(value = "/save.do")
-    public String saveDepartment(int dptNum,String dptName,int supDptnum){
-        Integer a=departmentService.createDpt(dptNum,dptName,supDptnum);
+
+    public String saveDepartment(int dptNum,String dptName,int supDptnum,Integer id){
+       if (id==null) {
+           Integer a = departmentService.createDpt(dptNum, dptName, supDptnum);
+           return  "redirect:/dept/index.do";
+       }
+        departmentService.updateDpt(id,dptNum, dptName,supDptnum);
         return  "redirect:/dept/index.do";
     }
 
+    /**
+     * 删除部门
+     * @param departmentModel
+     * @return
+     */
     @RequestMapping(value="/delete.do")
     @ResponseBody
     public  PlainResult<Boolean>deleteDept(DepartmentModel departmentModel){
@@ -58,6 +81,7 @@ public class deptController {
         return  result;
 
     }
+
 
 
 

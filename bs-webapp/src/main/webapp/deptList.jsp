@@ -11,8 +11,12 @@
     <script type="text/javascript" src="<%=path%>/js/colResizable-1.3.min.js"></script>
     <script type="text/javascript" src="<%=path%>/js/common.js"></script>
 
-    <title>员工发管理-用户列表</title>
+    <title>部门管理-部门列表</title>
 <script>
+    /**
+     * 删除部门
+     * @param id
+     */
     function deleteDpt(id) {
 
             $.ajax({
@@ -32,6 +36,12 @@
                     alert(result.message);
                 }
         });
+    }
+    /**
+     * 修改部门
+     */
+    function updateDpt(id) {
+        location.href="/dept/aaa.do?id="+id;
     }
 </script>
 </head>
@@ -60,13 +70,13 @@
 
 </body>
 <body>
-<div id="search_dpt">
-  <tr>`
-      <td>部门名字</td>
-      <td input id="dptName" type="text" name="dptName" class="input_dptName"></td>
-      <td>部门编号</td>
-      <td id="dptNum" type="text" name="dptNum" class="input_dptNum"></td>
-  </tr>
+<%--<div id="search_dpt">--%>
+  <%--<tr>`--%>
+      <%--<td>部门名字</td>--%>
+      <%--<td input id="dptName" type="text" name="dptName" class="input_dptName"></td>--%>
+      <%--<td>部门编号</td>--%>
+      <%--<td id="dptNum" type="text" name="dptNum" class="input_dptNum"></td>--%>
+  <%--</tr>--%>
     <div id="load_dpt " >
         <input type="button" onclick="location.href='/deptEdit.jsp'" value="添加">
         <input type="button" onclick="loadDpt()"value="查询">

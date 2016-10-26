@@ -27,9 +27,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Integer createDpt(int dtpNum,String dptName,int supDptnum) {
+    public Integer createDpt(int dptNum,String dptName,int supDptnum) {
         DepartmentModel departmentModel=new DepartmentModel();
-        departmentModel.setDptNum(dtpNum);
+        departmentModel.setDptNum(dptNum);
         departmentModel.setDptName(dptName);
         departmentModel.setSupDptnum(supDptnum);
         Integer a=departmentDao.cteateDpt(departmentModel);
@@ -38,9 +38,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Integer updateDpt(DepartmentModel depatmentModel) {
-        departmentDao.updateDpt(depatmentModel);
-        return depatmentModel.getId();
+    public void updateDpt(Integer id,int dptNum,String dptName,int supDptnum) {
+        DepartmentModel departmentModel=new DepartmentModel();
+        departmentModel.setDptNum(dptNum);
+        departmentModel.setDptName(dptName);
+        departmentModel.setSupDptnum(supDptnum);
+        departmentModel.setId(id);
+        departmentDao.updateDpt(departmentModel);
+
 
 
     }
