@@ -81,9 +81,20 @@ public class deptController {
         return  result;
 
     }
+    /**
+     * 查询部门
+     * @param
+     * @return
+     */
+     @RequestMapping(value = "/findBynum.do")
+
+     public String findBynum(Model model,Integer dptNum){
+         DepartmentModel departmentModel=departmentService.findByDptnum(dptNum);
+         model.addAttribute("departmentModel",departmentModel);
+         return "deptOne";
 
 
-
+     }
 
 
 }
