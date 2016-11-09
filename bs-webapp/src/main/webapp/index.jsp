@@ -109,7 +109,7 @@
             <li url="/user/index.do">用户管理</li>
             <li url="/dept/index.do">部门管理</li>
             <li>菜单管理</li>
-            <li>角色管理</li>
+            <li url="/role/index.do">角色管理</li>
             <li>权限管理</li>
         </ul>
         <h3>仓库管理</h3>

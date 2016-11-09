@@ -90,6 +90,9 @@ public class deptController {
 
      public String findBynum(Model model,Integer dptNum){
          DepartmentModel departmentModel=departmentService.findByDptnum(dptNum);
+         if(departmentModel==null){
+             model.addAttribute("result","无查询结果");
+         }
          model.addAttribute("departmentModel",departmentModel);
          return "deptOne";
 

@@ -45,7 +45,7 @@
         }
     </script>
 </head>
-<body id="dep">
+
 <table id="dtpTable" width="100%" border="0" cellpadding="0" cellspacing="0" class="list_dpt">
     <tr>
         <th width="5%">编号 ${departmentModel.id}</th>

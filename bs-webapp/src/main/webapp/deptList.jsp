@@ -83,7 +83,7 @@
  <form action="/dept/findBynum.do" class="jqtransform" >
     <div>
 
-        部门编号<input type="text" name="dptNum">
+        部门编号<input type="text" name="dptNum" >
                <input  type="submit" value="查询">
     </div>
      </form>
