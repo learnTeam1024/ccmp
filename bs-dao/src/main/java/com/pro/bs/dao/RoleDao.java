@@ -28,4 +28,8 @@ public interface RoleDao {
      * @param roleModel
      */
     Integer addRole(RoleModel roleModel);
+    /**
+     * 修改管理员信息
+     */
+    Integer updaterole(RoleModel roleModel);
 }

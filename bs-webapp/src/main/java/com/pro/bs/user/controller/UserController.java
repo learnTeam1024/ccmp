@@ -47,9 +47,6 @@ public class UserController {
 
         PageResult<EmployeeModel> pageResult = new PageResult<>();
 
-        //存放页面数据
-        model.addAttribute("pageResult", pageResult);
-
         //获取符合条件的用户总数
         Integer totalCount = employeeService.countUserByCondition(queryParam);
         pageResult.setTotalItem(totalCount);
@@ -65,6 +62,10 @@ public class UserController {
 
         //设置pageSize
         pageResult.setPageSize(queryParam.getPageSize());
+
+        //存放页面数据
+        model.addAttribute("pageResult", pageResult);
+
 
         return "userList_page";
     }

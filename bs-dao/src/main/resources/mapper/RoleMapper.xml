@@ -22,5 +22,9 @@
     #{roleName},#{rolePower},#{roleRank},now()
     )
 </insert>
+<update id="updaterole" parameterMap="roleParam" >
+    UPDATE role SET role_name=#{roleName},role_power=#{rolePower},role_rank=#{roleRank},
+    create_time=now()  WHERE id=#{id}
+</update>
 
 </mapper>

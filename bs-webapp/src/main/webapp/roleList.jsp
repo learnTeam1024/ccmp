@@ -21,6 +21,11 @@
     <title>角色管理-角色列表</title>
 
 </head>
+<script>
+function updaterole(id) {
+    location.href="/role/judge.do?id="+id;
+}
+</script>
 <body id="dep">
 <div id="load_dpt "  class="search_bar_btn" style="text-align:left;">
     <input type="button" onclick="location.href='/roleEdit.jsp'"class="ext_btn ext_btn_success"  value="添加">

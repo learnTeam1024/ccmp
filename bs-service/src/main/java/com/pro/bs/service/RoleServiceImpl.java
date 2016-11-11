@@ -30,5 +30,16 @@ public class RoleServiceImpl implements  RoleService {
         }
         return a;
 
-    };
+    }
+
+    @Override
+    public Integer updateRole(RoleModel roleModel) {
+        if (roleModel==null){
+            return 2;
+        }
+       Integer a= roleDao.updaterole(roleModel);
+        return a;
+    }
+
+    ;
 }

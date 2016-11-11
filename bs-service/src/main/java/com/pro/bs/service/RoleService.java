@@ -30,5 +30,9 @@ public interface RoleService {
          * @param roleModel
          */
         Integer addRole(RoleModel roleModel);
+        /**
+         * 修改管理员信息
+         */
+        Integer updateRole(RoleModel roleModel);
     }
 
