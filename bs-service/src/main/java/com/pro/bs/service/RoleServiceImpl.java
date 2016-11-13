@@ -13,14 +13,14 @@ import java.util.List;
 @Service("roleService")
 public class RoleServiceImpl implements  RoleService {
     @Resource private RoleDao roleDao;
-   public List<RoleModel> findAll(){
+   public List<RoleModel> findAllRole(){
        List<RoleModel> list=roleDao.findAll();
        return list;
    }
     public  RoleModel findByname(String roleName){
      return null;
     }
-    public   Integer addRole(RoleModel roleModel){
+    public   Integer adRole(RoleModel roleModel){
         if (roleModel==null){
             return 2;
         }
@@ -33,11 +33,20 @@ public class RoleServiceImpl implements  RoleService {
     }
 
     @Override
-    public Integer updateRole(RoleModel roleModel) {
+    public Integer upRole(RoleModel roleModel) {
         if (roleModel==null){
             return 2;
         }
-       Integer a= roleDao.updaterole(roleModel);
+       Integer a= roleDao.updateRole(roleModel);
+        return a;
+    }
+
+    @Override
+    public Integer delRole(Integer id) {
+        if (id==null){
+            return 2;
+        }
+        Integer a=roleDao.deleteRole(id);
         return a;
     }
 

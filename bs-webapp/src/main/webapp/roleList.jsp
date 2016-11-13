@@ -25,6 +25,23 @@
 function updaterole(id) {
     location.href="/role/judge.do?id="+id;
 }
+function deleterole(id) {
+    $.ajax({
+        url:"/role/delete.do",
+        type:"post",
+        data:{"id":id},
+        dataType:"json",
+        async:false,
+        success:function(){
+            $(document).click(function (e) {
+                $(e.target).parent().parent().empty();
+            })
+        },
+        error:function(result){
+            alert(result.message)
+        }
+    });
+}
 </script>
 <body id="dep">
 <div id="load_dpt "  class="search_bar_btn" style="text-align:left;">

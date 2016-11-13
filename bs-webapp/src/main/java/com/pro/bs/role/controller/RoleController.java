@@ -24,7 +24,7 @@ public class RoleController {
     @Resource private RoleService roleService;
     @RequestMapping(value ="/index.do")
     public String findAll(Model model){
-        List<RoleModel> list =roleService.findAll();
+        List<RoleModel> list =roleService.findAllRole();
         model.addAttribute("list",list);
         if (list==null){
             return "hello";
@@ -42,8 +42,11 @@ public class RoleController {
         if (roleModel==null){
             return "hello";
         }
+//        if (roleModel.getId()==5){
+//            return "hello";
+//        }
         if (roleModel.getId()==null) {
-            Integer a = roleService.addRole(roleModel);
+            Integer a = roleService.adRole(roleModel);
             if (a == 2) {
                 return "hello";
             }
@@ -55,7 +58,7 @@ public class RoleController {
          * @return
          */
 
-        Integer a= roleService.updateRole(roleModel);
+        Integer a= roleService.upRole(roleModel);
         if (a!=1){
             return "hello";
         }
@@ -63,12 +66,32 @@ public class RoleController {
     }
     /**
      *
+     *
      */
     @RequestMapping(value="/judge.do")
     public String judge(Model model, Integer id){
             model.addAttribute("id",id);
             return "roleEdit";
 
+    }
+    /**
+     * 删除角色信息
+     */
+    @RequestMapping(value="delete.do")
+    @ResponseBody
+    public BaseResult execute(Integer id){
+        BaseResult result=new BaseResult();
+        if (id==null){
+            result.setMessage("无效ID");
+            return  result;
+        }
+       Integer a= roleService.delRole(id);
+        if (a!=1){
+            result.setMessage("删除失败");
+            return result;
+        }
+        result.setMessage("删除成功");
+        return result;
     }
 
 

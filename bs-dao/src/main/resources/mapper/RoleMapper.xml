@@ -12,7 +12,7 @@
     </resultMap>
     <parameterMap id="roleParam" type="com.pro.bs.model.RoleModel"/>
 <select id="findAll" resultMap="BaseResultMap">
-    select * FROM  role ;
+    SELECT * FROM role WHERE is_delete=0;
 </select>
 <!--<select id="findByname" parameterMap="String" resultMap="BaseResultMap">-->
     <!--SELECT * FROM role WHERE role_name=#{role_name} AND is_delete=0;-->
@@ -22,9 +22,11 @@
     #{roleName},#{rolePower},#{roleRank},now()
     )
 </insert>
-<update id="updaterole" parameterMap="roleParam" >
+<update id="updateRole" parameterMap="roleParam" >
     UPDATE role SET role_name=#{roleName},role_power=#{rolePower},role_rank=#{roleRank},
     create_time=now()  WHERE id=#{id}
 </update>
-
+<update id="deleteRole" parameterType="Integer">
+    UPDATE role SET is_delete=1 WHERE id=#{id};
+</update>
 </mapper>

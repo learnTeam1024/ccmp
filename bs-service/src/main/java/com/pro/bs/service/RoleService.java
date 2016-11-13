@@ -14,7 +14,7 @@ public interface RoleService {
          *
          * @return
          */
-        List<RoleModel> findAll();
+        List<RoleModel> findAllRole();
 
         /**
          * 查询单个信息
@@ -29,10 +29,14 @@ public interface RoleService {
          *
          * @param roleModel
          */
-        Integer addRole(RoleModel roleModel);
+        Integer adRole(RoleModel roleModel);
         /**
          * 修改管理员信息
          */
-        Integer updateRole(RoleModel roleModel);
+        Integer upRole(RoleModel roleModel);
+        /**
+         * 删除角色信息
+         */
+        Integer delRole(Integer id);
     }
 

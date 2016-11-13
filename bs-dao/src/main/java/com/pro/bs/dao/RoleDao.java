@@ -31,5 +31,9 @@ public interface RoleDao {
     /**
      * 修改管理员信息
      */
-    Integer updaterole(RoleModel roleModel);
+    Integer updateRole(RoleModel roleModel);
+    /**
+     * 删除角色信息
+     */
+    Integer deleteRole(Integer id);
 }
