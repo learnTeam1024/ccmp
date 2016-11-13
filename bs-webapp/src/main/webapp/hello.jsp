@@ -13,6 +13,9 @@
 <body>
 <h1>
     Hello
+    ${a}
+    ${b}
+    ${list[1].id}
 </h1>
 
 </body>

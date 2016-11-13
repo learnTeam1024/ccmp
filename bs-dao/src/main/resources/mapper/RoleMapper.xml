@@ -29,4 +29,14 @@
 <update id="deleteRole" parameterType="Integer">
     UPDATE role SET is_delete=1 WHERE id=#{id};
 </update>
+<select id="findByName" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM role WHERE role_name=#{roleName} AND is_delete=0;
+</select>
+<select id="findByRank" parameterType="Integer" resultMap="BaseResultMap" >
+    SELECT * FROM  role WHERE  role_rank=#{roleRank} AND  is_delete=0;
+</select>
+<select id="findBySome" parameterMap="roleParam" resultMap="BaseResultMap" >
+    SELECT * FROM (SELECT * FROM role WHERE is_delete=0) a WHERE
+    role_name=#{roleName} AND role_rank=#{roleRank}
+ </select>
 </mapper>

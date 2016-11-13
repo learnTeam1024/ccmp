@@ -17,14 +17,6 @@ public interface RoleService {
         List<RoleModel> findAllRole();
 
         /**
-         * 查询单个信息
-         *
-         * @param roleName
-         * @return
-         */
-        RoleModel findByname(String roleName);
-
-        /**
          * 增加管理员
          *
          * @param roleModel
@@ -38,5 +30,17 @@ public interface RoleService {
          * 删除角色信息
          */
         Integer delRole(Integer id);
+        /**
+         * 根据名字查询
+         */
+        List<RoleModel> findName(String roleName);
+        /**
+         *根据权利等级查询
+         */
+        List<RoleModel> findRank(Integer roleRank);
+        /**
+         * 根据 名字+权利等级
+         */
+        List<RoleModel> findSome(RoleModel roleModel);
     }
 

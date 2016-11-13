@@ -17,9 +17,7 @@ public class RoleServiceImpl implements  RoleService {
        List<RoleModel> list=roleDao.findAll();
        return list;
    }
-    public  RoleModel findByname(String roleName){
-     return null;
-    }
+
     public   Integer adRole(RoleModel roleModel){
         if (roleModel==null){
             return 2;
@@ -48,6 +46,21 @@ public class RoleServiceImpl implements  RoleService {
         }
         Integer a=roleDao.deleteRole(id);
         return a;
+    }
+
+    public List<RoleModel> findName(String roleName) {
+        List<RoleModel>list=roleDao.findByName(roleName);
+        return list;
+    }
+
+    public List<RoleModel> findRank(Integer roleRank) {
+        List<RoleModel>list=roleDao.findByRank(roleRank);
+        return list;
+    }
+
+    public List<RoleModel> findSome(RoleModel roleModel) {
+        List<RoleModel>list=roleDao.findBySome(roleModel);
+        return list;
     }
 
     ;

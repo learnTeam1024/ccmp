@@ -93,6 +93,44 @@ public class RoleController {
         result.setMessage("删除成功");
         return result;
     }
+    /**
+     * 根据所给条件分情况查询
+     */
+    @RequestMapping(value="/findBySome.do")
+    public String findResult(Model model,RoleModel roleModel){
+        String roleName=roleModel.getRoleName();
+        Integer roleRank=roleModel.getRoleRank();
+        if (roleRank==-1 & roleName==""){
+            return "hello";
+        }
+        if (roleName==""){
+            List<RoleModel>list=roleService.findRank(roleRank);
+            model.addAttribute("list",list);
+            return "roleList";
+        }
+        if (roleRank==-1){
+            List<RoleModel>list=roleService.findName(roleName);
+            model.addAttribute("list",list);
+            return "roleList";
+        }
+        List<RoleModel>list=roleService.findSome(roleModel);
+        model.addAttribute("list",list);
+        return "roleList";
+
+
+    }
+    /**
+     * 测试
+     */
+    @RequestMapping(value="/qqq.do")
+    public String qqq(Model model,RoleModel roleModel){
+       Integer a= roleModel.getRoleRank();
+       String b=roleModel.getRoleName();
+        model.addAttribute("a",a);
+        model.addAttribute("b",b);
+        return "hello";
+
+    }
 
 
 }

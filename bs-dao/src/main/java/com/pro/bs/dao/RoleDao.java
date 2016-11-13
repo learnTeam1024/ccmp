@@ -36,4 +36,17 @@ public interface RoleDao {
      * 删除角色信息
      */
     Integer deleteRole(Integer id);
+    /**
+     * 根据名字查询
+     */
+    List<RoleModel> findByName(String roleName);
+    /**
+     *根据权利等级查询
+     */
+    List<RoleModel> findByRank(Integer roleRank);
+    /**
+     * 根据 名字+权利等级
+     */
+    List<RoleModel> findBySome(RoleModel roleModel);
+
 }

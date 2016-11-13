@@ -43,10 +43,33 @@ function deleterole(id) {
     });
 }
 </script>
-<body id="dep">
+<body id="add_role">
 <div id="load_dpt "  class="search_bar_btn" style="text-align:left;">
     <input type="button" onclick="location.href='/roleEdit.jsp'"class="ext_btn ext_btn_success"  value="添加">
 </div>
+<form action="/role/findBySome.do" class="jqtransform">
+<div id="find_role" class="search_bar_btn" style="text-align:left;">
+    <tr>
+        管理员姓名<input type="text" name="roleName">
+    </tr>
+    <tr>
+        权利等级
+        <select  name="roleRank">
+            <option  value="-1"> 请选择</option>
+            <option  value="1"> 1 </option>
+            <option  value="2"> 2 </option>
+            <option  value="3"> 3 </option>
+            <option  value="4"> 4 </option>
+            <option  value="5"> 5 </option>
+            <option  value="6"> 6 </option>
+            <option  value="7"> 7 </option>
+            <option  value="8"> 8 </option>
+        </select>
+    </tr>
+    <input type="submit" value="查询">
+
+</div>
+</form>
 <table id="dtpTable" width="100%" border="0" cellpadding="0" cellspacing="0" class="list_role">
     <tr>
         <th width="5%">id</th>
@@ -76,6 +99,5 @@ function deleterole(id) {
 
 
 </table>
-
 </body>
 </html>
