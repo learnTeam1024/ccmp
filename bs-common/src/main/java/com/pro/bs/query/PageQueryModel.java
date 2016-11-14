@@ -17,6 +17,9 @@ public class PageQueryModel {
      */
     private int startRow;
 
+    public void setStartRow(int startRow) {
+        this.startRow = startRow;
+    }
 
     /**
      * 每页大小

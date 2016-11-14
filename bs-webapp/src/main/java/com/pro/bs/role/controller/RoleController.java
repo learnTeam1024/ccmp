@@ -2,6 +2,7 @@ package com.pro.bs.role.controller;
 
 import com.pro.bs.model.RoleModel;
 import com.pro.bs.result.BaseResult;
+import com.pro.bs.result.PageResult;
 import com.pro.bs.service.RoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +25,28 @@ public class RoleController {
     @Resource private RoleService roleService;
     @RequestMapping(value ="/index.do")
     public String findAll(Model model){
-        List<RoleModel> list =roleService.findAllRole();
-        model.addAttribute("list",list);
+        int totalPage=0;
+        PageResult pr=new PageResult();
+        Integer allCount =roleService.countAll();
+        pr.setPageSize(4);
+        if (allCount%pr.getPageSize()!=0){
+            totalPage=(int)Math.ceil(allCount/pr.getPageSize())+1;
+        }
+        if (allCount%pr.getPageSize()==0){
+             totalPage=(int)Math.ceil(allCount/pr.getPageSize());
+        }
+
+        pr.setTotalPage(totalPage);// currentPage totalPage
+        model.addAttribute("totalPage",totalPage);
+        model.addAttribute("currentPage",1);
+        RoleModel model1=new RoleModel();
+        model1.setStartRow(0);
+        model1.setPageSize(pr.getPageSize());
+        List<RoleModel>list=roleService.findDes(model1);
+
+
+//        List<RoleModel> list =roleService.findAllRole();
+          model.addAttribute("list",list);
         if (list==null){
             return "hello";
         }
@@ -119,6 +140,43 @@ public class RoleController {
 
 
     }
+    /**
+     * 分页查询
+     */
+    @RequestMapping(value="/ListRole.do")
+    public String findDe(RoleModel roleModel,Model model,Integer currentPage){//startRow  pageSize
+        int totalPage=0;
+        roleModel.setPageSize(4);
+        roleModel.setStartRow((currentPage-1)*roleModel.getPageSize());
+        List<RoleModel>list=roleService.findDes(roleModel);
+        model.addAttribute("list",list);
+
+        PageResult pr=new PageResult();
+        Integer allCount =roleService.countAll();
+        pr.setPageSize(4);
+        if (allCount%pr.getPageSize()!=0){
+            totalPage=(int)Math.ceil(allCount/pr.getPageSize())+1;
+        }
+        if (allCount%pr.getPageSize()==0){
+            totalPage=(int)Math.ceil(allCount/pr.getPageSize());
+        }
+
+        pr.setTotalPage(totalPage);// currentPage totalPage
+        model.addAttribute("totalPage",pr.getTotalPage());
+        model.addAttribute("currentPage",currentPage);
+
+        return "roleList";
+    }
+//    public  String count(Model model){
+//        PageResult pr=new PageResult();
+//        Integer allCount =roleService.countAll();
+//        pr.setPageSize(4);
+//        pr.setTotalPage(allCount/pr.getPageSize());// currentPage totalPage
+//        model.addAttribute("totalPage",pr.getTotalPage());
+//        model.addAttribute("currentPage",1);
+//        return  "roleList";
+//
+//    }
     /**
      * 测试
      */

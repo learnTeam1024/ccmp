@@ -42,5 +42,13 @@ public interface RoleService {
          * 根据 名字+权利等级
          */
         List<RoleModel> findSome(RoleModel roleModel);
+        /**
+         * 分页查询
+         */
+        List<RoleModel> findDes(RoleModel roleModel);
+        /**
+         * 查询总记录数
+         */
+        Integer countAll();
     }
 

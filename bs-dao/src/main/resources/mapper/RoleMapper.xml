@@ -39,4 +39,10 @@
     SELECT * FROM (SELECT * FROM role WHERE is_delete=0) a WHERE
     role_name=#{roleName} AND role_rank=#{roleRank}
  </select>
+ <select id="desFind" parameterMap="roleParam" resultMap="BaseResultMap" >
+     select * from role WHERE is_delete=0 limit #{startRow},#{pageSize} ;
+ </select>
+ <select id="allCount" resultType="Integer">
+     SELECT count(*) FROM  role WHERE is_delete=0 ;
+ </select>
 </mapper>

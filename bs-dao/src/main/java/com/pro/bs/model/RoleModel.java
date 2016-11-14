@@ -1,17 +1,37 @@
 package com.pro.bs.model;
 
+import com.pro.bs.query.PageQueryModel;
+
 import java.util.Date;
 
 /**
  * Created by Administrator on 2016/11/2.
  */
-public class RoleModel {
+public class RoleModel  {
     private Integer id;
     private String roleName;
     private String rolePower;
     private Integer roleRank;
     private Integer isDelete;
     private Date createTime;
+    private Integer startRow;
+    private Integer pageSize;
+
+    public Integer getStartRow() {
+        return startRow;
+    }
+
+    public void setStartRow(Integer startRow) {
+        this.startRow = startRow;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public Integer getIsDelete() {
         return isDelete;

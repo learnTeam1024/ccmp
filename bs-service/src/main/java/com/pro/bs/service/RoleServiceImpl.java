@@ -63,5 +63,17 @@ public class RoleServiceImpl implements  RoleService {
         return list;
     }
 
+    @Override
+    public List<RoleModel> findDes(RoleModel roleModel) {
+        List<RoleModel>list=roleDao.desFind(roleModel);
+        return list;
+    }
+
+    @Override
+    public Integer countAll() {
+        Integer allCount=roleDao.allCount();
+        return allCount;
+    }
+
     ;
 }

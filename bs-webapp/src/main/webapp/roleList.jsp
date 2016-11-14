@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
     String path = request.getContextPath(); %>
 
@@ -95,9 +96,22 @@ function deleterole(id) {
     </c:if>
 
 
-
-
-
 </table>
+<br>
+<c:if test="${currentPage>1 }">
+    <a href="ListRole.do?currentPage=1" >首页</a>
+    <a href="ListRole.do?currentPage=${currentPage-1 }">上一页</a>
+</c:if>
+<c:if test="${currentPage <totalPage }">
+    <a href="ListRole.do?currentPage=${currentPage+1 }">下一页</a>
+    <a href="ListRole.do?currentPage=${totalPage }">末页</a>
+
+</c:if>
+<form action="ListRole.do">
+    <h4 align="center">共${totalPage}页
+        <input type="text" value="${currentPage}" name="currentPage" size="1">页
+        <input type="submit" value="到达">
+    </h4>
+</form>
 </body>
 </html>

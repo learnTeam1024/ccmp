@@ -48,5 +48,13 @@ public interface RoleDao {
      * 根据 名字+权利等级
      */
     List<RoleModel> findBySome(RoleModel roleModel);
+    /**
+     * 分页查询
+     */
+    List<RoleModel> desFind(RoleModel roleModel);
+    /**
+     * 查询总记录数
+     */
+    Integer allCount();
 
 }
