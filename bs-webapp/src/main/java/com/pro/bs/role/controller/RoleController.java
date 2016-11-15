@@ -152,31 +152,20 @@ public class RoleController {
         PageResult pr=new PageResult();
         Integer allCount =roleService.countAll();
         pr.setPageSize(4);
-        if (allCount%pr.getPageSize()!=0){
-            totalPage=(int)Math.ceil(allCount/pr.getPageSize())+1;
+        if (allCount%roleModel.getPageSize()!=0){
+            totalPage=(int)Math.ceil(allCount/roleModel.getPageSize()+1);
         }
-        if (allCount%pr.getPageSize()==0){
-            totalPage=(int)Math.ceil(allCount/pr.getPageSize());
+        if (allCount%roleModel.getPageSize()==0){
+            totalPage=(int)Math.ceil(allCount/roleModel.getPageSize());
         }
-
-        pr.setTotalPage(totalPage);// currentPage totalPage
         List<RoleModel>list=roleService.findDes(roleModel);
         model.addAttribute("list",list);
-        model.addAttribute("totalPage",pr.getTotalPage());
+        model.addAttribute("totalPage",totalPage);
         model.addAttribute("currentPage",currentPage);
 
         return "roleList";
     }
-//    public  String count(Model model){
-//        PageResult pr=new PageResult();
-//        Integer allCount =roleService.countAll();
-//        pr.setPageSize(4);
-//        pr.setTotalPage(allCount/pr.getPageSize());// currentPage totalPage
-//        model.addAttribute("totalPage",pr.getTotalPage());
-//        model.addAttribute("currentPage",1);
-//        return  "roleList";
-//
-//    }
+
     /**
      * 测试
      */
