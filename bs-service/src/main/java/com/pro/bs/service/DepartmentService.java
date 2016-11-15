@@ -32,6 +32,13 @@ public interface DepartmentService {
     /**
      * 逻辑删除部门
      */
-
     Integer deleteDpt (Integer dptNum);
+    /**
+     * 查询部门数量
+     */
+    Integer findCounts();
+    /**
+     * 分页显示
+     */
+   List<DepartmentModel>  depPage(DepartmentModel departmentModel);
 }

@@ -40,5 +40,11 @@
         UPDATE department SET is_delete=1 WHERE id=#{id};
     </update>
 
+    <select id="findCount" resultType="Integer" >
+        SELECT count(*) FROM  department WHERE is_delete=0 ;
+    </select>
+    <select id="findDep"  resultMap="BaseResultMap" parameterMap="dataParam">
+        select * from department WHERE is_delete=0 limit  #{startRow},#{pageSize} ;
+    </select>
 
 </mapper>

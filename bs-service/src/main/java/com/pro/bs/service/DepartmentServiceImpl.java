@@ -56,4 +56,14 @@ public class DepartmentServiceImpl implements DepartmentService {
         return  a;
 
     }
+
+    public Integer findCounts() {
+        Integer depCount=departmentDao.findCount();
+        return depCount;
+    }
+
+    public List<DepartmentModel> depPage(DepartmentModel departmentModel) {
+        List<DepartmentModel> list=departmentDao.findDep(departmentModel);
+        return list;
+    }
 }

@@ -32,7 +32,7 @@ public class RoleController {
         if (allCount%pr.getPageSize()!=0){
             totalPage=(int)Math.ceil(allCount/pr.getPageSize())+1;
         }
-        if (allCount%pr.getPageSize()==0){
+        else {
              totalPage=(int)Math.ceil(allCount/pr.getPageSize());
         }
 
@@ -148,8 +148,6 @@ public class RoleController {
         int totalPage=0;
         roleModel.setPageSize(4);
         roleModel.setStartRow((currentPage-1)*roleModel.getPageSize());
-        List<RoleModel>list=roleService.findDes(roleModel);
-        model.addAttribute("list",list);
 
         PageResult pr=new PageResult();
         Integer allCount =roleService.countAll();
@@ -162,6 +160,8 @@ public class RoleController {
         }
 
         pr.setTotalPage(totalPage);// currentPage totalPage
+        List<RoleModel>list=roleService.findDes(roleModel);
+        model.addAttribute("list",list);
         model.addAttribute("totalPage",pr.getTotalPage());
         model.addAttribute("currentPage",currentPage);
 

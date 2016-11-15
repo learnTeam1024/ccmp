@@ -46,6 +46,21 @@
 </script>
 </head>
 <body id="dep">
+<div id="load_dpt " >
+    <input type="button" onclick="location.href='/deptEdit.jsp'" value="添加">
+</div>
+<form action="/dept/findBynum.do" class="jqtransform" >
+    <div>
+
+        部门编号<input type="text" name="dptNum" >
+        <input  type="submit" value="查询">
+    </div>
+</form>
+</div>
+<%--<div id="dpt_table">--%>
+
+<%--</div>--%>
+
 <table id="dtpTable" width="100%" border="0" cellpadding="0" cellspacing="0" class="list_dpt">
     <tr>
         <th width="5%">编号</th>
@@ -67,29 +82,26 @@
     </tr>
     </c:forEach>
     </c:if>
+</table>
+
+
 
 </body>
-<body>
-<%--<div id="search_dpt">--%>
-  <%--<tr>`--%>
-      <%--<td>部门名字</td>--%>
-      <%--<td input id="dptName" type="text" name="dptName" class="input_dptName"></td>--%>
-      <%--<td>部门编号</td>--%>
-      <%--<td id="dptNum" type="text" name="dptNum" class="input_dptNum"></td>--%>
-  <%--</tr>--%>
-    <div id="load_dpt " >
-        <input type="button" onclick="location.href='/deptEdit.jsp'" value="添加">
-    </div>
- <form action="/dept/findBynum.do" class="jqtransform" >
-    <div>
+<br>
+<c:if test="${currentPage>1 }">
+    <a href="listDepartment.do?currentPage=1" >首页</a>
+    <a href="listDepartment.do?currentPage=${currentPage-1 }">上一页</a>
+</c:if>
+<c:if test="${currentPage <totalPage }">
+    <a href="listDepartment.do?currentPage=${currentPage+1 }">下一页</a>
+    <a href="listDepartment.do?currentPage=${totalPage }">末页</a>
 
-        部门编号<input type="text" name="dptNum" >
-               <input  type="submit" value="查询">
-    </div>
-     </form>
-</div>
-   <div id="dpt_table">
-
-   </div>
-</body>
+</c:if>
+<form action="listDepartment.do">
+    <h4 align="center">共${totalPage}页
+        <input type="text" value="${currentPage}" name="currentPage" size="1">页
+        <input type="submit" value="到达">
+    </h4>
+</form>
+${allCounts}
 </html>

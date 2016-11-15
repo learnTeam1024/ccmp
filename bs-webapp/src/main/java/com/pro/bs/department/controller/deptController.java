@@ -22,14 +22,30 @@ import java.util.List;
 @RequestMapping(value = "/dept")
 public class deptController {
 
-
     @Resource
     private DepartmentService departmentService;
     @RequestMapping(value ="/index.do")
-    public  String findAll(ModelMap model){
-        List<DepartmentModel> list=departmentService.findAll();
-        model.put("list",list);
-        return  "deptList";
+    public  String findAll(Model model){
+        DepartmentModel departmentModel=new DepartmentModel();
+        int totalPage=0;
+        departmentModel.setPageSize(3);
+        departmentModel.setStartRow(0);
+        Integer allCounts=departmentService.findCounts();
+        if (allCounts%departmentModel.getPageSize()==0){
+            totalPage=allCounts/departmentModel.getPageSize();
+        }
+        else{
+            totalPage=(int)Math.ceil(allCounts/departmentModel.getPageSize()+1);
+        }
+        model.addAttribute("totalPage",totalPage);
+        model.addAttribute("currentPage",1);
+        List<DepartmentModel>list=departmentService.depPage(departmentModel);
+        model.addAttribute("list",list);
+        if (list==null){
+            return "hello";
+        }
+        return "deptList";
+
     }
 
     /**
@@ -92,12 +108,36 @@ public class deptController {
          DepartmentModel departmentModel=departmentService.findByDptnum(dptNum);
          if(departmentModel==null){
              model.addAttribute("result","无查询结果");
+             return "hello";
          }
          model.addAttribute("departmentModel",departmentModel);
          return "deptOne";
 
 
      }
+    /**
+     * 分页功能的实现
+     */
+    @RequestMapping(value="listDepartment.do")
+    public  String depPage(Model model,Integer currentPage){
+        Integer totalPage=0;
+        DepartmentModel departmentModel=new DepartmentModel();
+        departmentModel.setPageSize(3);
+        departmentModel.setStartRow((currentPage-1)*departmentModel.getPageSize());
+        List<DepartmentModel>list=departmentService.depPage(departmentModel);
+        model.addAttribute("list",list);
+        model.addAttribute("currentPage",currentPage);
+
+        Integer allCounts=departmentService.findCounts();
+        if (allCounts%departmentModel.getPageSize()==0){
+            totalPage=allCounts/departmentModel.getPageSize();
+        }
+        else{
+            totalPage=(int)Math.ceil(allCounts/departmentModel.getPageSize()+1);
+        }
+        model.addAttribute("totalPage",totalPage);
+        return "deptList";
+    }
 
 
 }

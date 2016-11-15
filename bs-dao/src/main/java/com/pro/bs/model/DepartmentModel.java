@@ -25,6 +25,32 @@ public class DepartmentModel {
      */
     private  Integer  isDelete;
 
+    /**
+     *起始
+     */
+    private  Integer  startRow;
+
+    /**
+     *每页显示数量
+     */
+    private  Integer pageSize;
+
+    public Integer getStartRow() {
+        return startRow;
+    }
+
+    public void setStartRow(Integer startRow) {
+        this.startRow = startRow;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
     public Integer getId() {
         return id;
     }

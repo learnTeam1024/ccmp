@@ -33,5 +33,13 @@ public interface DepartmentDao {
      */
 
     Integer deleteDpt (Integer dptNum);
+    /**
+     * 查询部门数量
+     */
+    Integer findCount();
+    /**
+     * 分页查询
+     */
+     List<DepartmentModel> findDep (DepartmentModel departmentModel);
 }
 

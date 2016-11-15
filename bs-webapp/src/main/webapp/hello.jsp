@@ -12,10 +12,7 @@
 </head>
 <body>
 <h1>
-    Hello
-    ${a}
-    ${b}
-    ${list[1].id}
+  ${result}
 </h1>
 
 </body>
