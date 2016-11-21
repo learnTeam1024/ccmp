@@ -60,4 +60,8 @@ public interface EmployeeService {
      * @param empId 用户Id
      */
     EmployeeModel getUserDetail(Integer empId);
+    /**
+     * 根据姓名查ID
+     */
+    Integer findId(String userName);
 }

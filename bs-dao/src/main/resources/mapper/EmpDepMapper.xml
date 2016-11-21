@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pro.bs.dao.EmpDepDao">
+
+    <resultMap id="BaseResultMap" type="com.pro.bs.model.EmpDepModel">
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="dep_num" property="depNum"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <parameterMap id="dataParam" type="com.pro.bs.model.EmpDepModel"/>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM emp_dep WHERE  is_delete=0;
+    </select>
+    <insert id="addEmp" parameterMap="dataParam" >
+        INSERT INTO emp_dep (user_name,dep_num,is_delete,create_time) VALUES (
+        #{userName},#{depNum},0,now()
+        )
+    </insert>
+</mapper>

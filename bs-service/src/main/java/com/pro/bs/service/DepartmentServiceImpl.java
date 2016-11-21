@@ -66,4 +66,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         List<DepartmentModel> list=departmentDao.findDep(departmentModel);
         return list;
     }
+
+    @Override
+    public Integer findId(Integer dptNum) {
+        Integer id=departmentDao.findOne(dptNum);
+        return id;
+    }
 }

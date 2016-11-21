@@ -41,4 +41,8 @@ public interface DepartmentService {
      * 分页显示
      */
    List<DepartmentModel>  depPage(DepartmentModel departmentModel);
+    /**
+     * 查询单个
+     */
+    Integer findId (Integer dptNum);
 }

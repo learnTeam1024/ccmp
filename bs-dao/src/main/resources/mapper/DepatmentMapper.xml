@@ -47,4 +47,8 @@
         select * from department WHERE is_delete=0 limit  #{startRow},#{pageSize} ;
     </select>
 
+    <select id="findOne" parameterType="Integer" resultType="Integer">
+        SELECT  id FROM  department WHERE dpt_num=#{dptNum} AND is_delete=0;
+    </select>
+
 </mapper>

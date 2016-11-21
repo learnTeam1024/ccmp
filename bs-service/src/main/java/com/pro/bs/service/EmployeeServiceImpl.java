@@ -84,4 +84,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeModel;
     }
 
+    public Integer findId(String userName) {
+        Integer id=employeeDao.findOne(userName);
+        return id;
+    }
+
 }

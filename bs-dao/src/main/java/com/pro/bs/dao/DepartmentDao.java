@@ -41,5 +41,9 @@ public interface DepartmentDao {
      * 分页查询
      */
      List<DepartmentModel> findDep (DepartmentModel departmentModel);
+    /**
+     * 查询单个
+     */
+    Integer findOne(Integer dptNum);
 }
 

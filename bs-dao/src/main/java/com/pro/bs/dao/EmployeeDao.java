@@ -60,4 +60,8 @@ public interface EmployeeDao {
      * @return 用户信息
      */
     EmployeeModel getById(Integer empId);
+    /**
+     * 查找单个
+     */
+    Integer findOne(String userName);
 }
