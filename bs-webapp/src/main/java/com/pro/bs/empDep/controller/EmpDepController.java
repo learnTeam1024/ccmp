@@ -6,6 +6,7 @@ import com.pro.bs.result.PlainResult;
 import com.pro.bs.service.DepartmentService;
 import com.pro.bs.service.EmpDepService;
 import com.pro.bs.service.EmployeeService;
+import org.springframework.http.client.support.HttpRequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,5 +69,28 @@ public class EmpDepController {
             return "hello";
         }
         return  "redirect:/empDep/index.do";
+    }
+    @RequestMapping(value="/promo.do")
+    @ResponseBody
+    public PageResult promo(Integer id) {
+        EmpDepModel empDepModel=new EmpDepModel();
+        PageResult result =new PageResult();
+        if (id == null) {
+            result.setMessage("没有这个用户");
+            return result;
+        } else {
+            Integer dep_num = empDepService.findNum(id);
+            Integer supNum=departmentService.findUp(dep_num);
+            if (supNum==null){
+                result.setMessage("没有上级部门");
+                return result;
+            }else{
+                empDepModel.setId(id);
+                empDepModel.setDepNum(supNum);
+                empDepService.upNum(empDepModel);
+                result.setCode(supNum);
+                return result;
+            }
+        }
     }
 }

@@ -16,4 +16,12 @@ public interface EmpDepDao {
      * 增加员工职位信息
      */
     Integer addEmp (EmpDepModel empDepModel);
+    /**
+     * 查询部门编号
+     */
+    Integer findDep(Integer id);
+    /**
+     * 升职
+     */
+    Integer upDep(EmpDepModel empDepModel);
 }

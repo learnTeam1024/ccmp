@@ -50,5 +50,8 @@
     <select id="findOne" parameterType="Integer" resultType="Integer">
         SELECT  id FROM  department WHERE dpt_num=#{dptNum} AND is_delete=0;
     </select>
+    <select id="findSup" resultType="Integer" parameterType="Integer">
+        SELECT sup_dpt_num FROM department WHERE dpt_num=#{dptNum} AND is_delete=0;
+    </select>
 
 </mapper>

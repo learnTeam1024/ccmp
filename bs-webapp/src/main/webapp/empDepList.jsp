@@ -21,6 +21,28 @@
     <title>用户-部门列表</title>
 
 </head>
+<script >
+    function promotion(id) {
+        $.ajax({
+            url:"/empDep/promo.do",
+            type:"post",
+            data:{"id":id},
+            dataType:"json",
+            async:false,
+            success:function(result){
+                alert(result.message);
+                location.href="/empDep/index.do";
+            },
+            error:function(result){
+                alert(result.message);
+            }
+        });
+        
+    }
+//    function  demotion(id) {
+//
+//    }
+</script>
 
 <body id="emp_dep">
 
@@ -42,14 +64,15 @@
     </tr>
 
     <c:if test="${list.size() > 0}">
-        <c:forEach items="${list}" var="empdep" >
+        <c:forEach items="${list}" var="empDep" >
             <tr class="tr">
-                <td>${empdep.id}</td>
-                <td>${empdep.userName}</td>
-                <td>${empdep.depNum}</td>
-                <td>${empdep.createTime}</td>
+                <td>${empDep.id}</td>
+                <td>${empDep.userName}</td>
+                <td>${empDep.depNum}</td>
+                <td>${empDep.createTime}</td>
                 <td>
-                    <a style="cursor: pointer" onclick="updateDpt(${empdep.id})">修改</a>|<a style="cursor: pointer" onclick="deleteDpt(${empdep.id})">删除</a>
+                    <a style="cursor: pointer" onclick="promotion(${empDep.id})">升职</a>--<a style="cursor: pointer"
+                         onclick="demotion(${empDep.id})">降职</a>--<a style="cursor: pointer" onclick="deleteDpt(${empDep.id})">删除</a>
                 </td>
             </tr>
         </c:forEach>

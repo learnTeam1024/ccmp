@@ -18,6 +18,14 @@ public interface EmpDepService {
      * 增加员工职位信息
      */
     Integer addEmpdep(EmpDepModel empDepModel);
+    /**
+     * 查询对应ID部门编号
+     */
+    Integer findNum (Integer id);
+    /**
+     * 升职
+     */
+    Integer upNum(EmpDepModel empDepModel);
 
 
 }

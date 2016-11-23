@@ -94,8 +94,7 @@
                             <td class="td_right">&nbsp;</td>
                             <td class="">
                                 <a style="cursor: pointer" onclick="saveEmp()">保存
-                                <%--<input type="submit" name="button" class="btn btn82 btn_save2" value="保存">--%>
-                                <%--<input type="reset" name="button" class="btn btn82 btn_res" value="重置">--%>
+                                <input type="reset" name="button" class="btn btn82 btn_res" value="重置">
                             </td>
                         </tr>
                     </table>

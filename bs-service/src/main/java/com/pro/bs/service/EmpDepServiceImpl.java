@@ -12,16 +12,27 @@ import java.util.List;
  */
 @Service("empDepService")
 public class EmpDepServiceImpl implements EmpDepService {
-    @Resource
-    private  EmpDepDao empDepDao;
+   @Resource private  EmpDepDao empDepDao;
+    @Override
     public List<EmpDepModel> allFind() {
         List<EmpDepModel> list=empDepDao.findAll();
         return list;
     }
-
     @Override
     public Integer addEmpdep(EmpDepModel empDepModel) {
         Integer a=empDepDao.addEmp(empDepModel);
+        return a;
+    }
+
+    @Override
+    public Integer findNum(Integer id) {
+        Integer depNum=empDepDao.findDep(id);
+        return depNum;
+    }
+
+    @Override
+    public Integer upNum(EmpDepModel empDepModel) {
+        Integer a=empDepDao.upDep(empDepModel);
         return a;
     }
 }

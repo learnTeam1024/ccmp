@@ -72,4 +72,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         Integer id=departmentDao.findOne(dptNum);
         return id;
     }
+
+    @Override
+    public Integer findUp(Integer dptNum) {
+        Integer supNum=departmentDao.findSup(dptNum);
+        return supNum;
+    }
 }

@@ -20,4 +20,10 @@
         #{userName},#{depNum},0,now()
         )
     </insert>
+    <select id="findDep" parameterType="Integer" resultType="Integer">
+        SELECT  dep_num FROM  emp_dep WHERE id=#{id} AND is_delete=0;
+    </select>
+    <update id="upDep" parameterMap="dataParam" >
+        UPDATE emp_dep SET dep_num=#{depNum} WHERE id=#{id} AND is_delete=0;
+    </update>
 </mapper>

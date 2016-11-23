@@ -45,4 +45,8 @@ public interface DepartmentService {
      * 查询单个
      */
     Integer findId (Integer dptNum);
+    /**
+     * 根据部门查上级
+     */
+    Integer findUp(Integer dptNum);
 }
