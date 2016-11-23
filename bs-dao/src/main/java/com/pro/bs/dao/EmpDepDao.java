@@ -24,4 +24,8 @@ public interface EmpDepDao {
      * 升职
      */
     Integer upDep(EmpDepModel empDepModel);
+    /**
+     * 逻辑删除
+     */
+    Integer delete(Integer id);
 }

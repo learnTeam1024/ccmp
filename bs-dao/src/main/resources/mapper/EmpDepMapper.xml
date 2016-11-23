@@ -26,4 +26,7 @@
     <update id="upDep" parameterMap="dataParam" >
         UPDATE emp_dep SET dep_num=#{depNum} WHERE id=#{id} AND is_delete=0;
     </update>
+    <update id="delete" parameterType="Integer">
+        UPDATE emp_dep SET is_delete=1 WHERE id=#{id};
+    </update>
 </mapper>

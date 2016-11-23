@@ -78,4 +78,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         Integer supNum=departmentDao.findSup(dptNum);
         return supNum;
     }
+
+    @Override
+    public List<Integer> findLw(Integer supDptnum) {
+        List<Integer>list=departmentDao.findLow(supDptnum);
+        return list;
+    }
 }

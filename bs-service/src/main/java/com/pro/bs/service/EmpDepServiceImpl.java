@@ -35,4 +35,10 @@ public class EmpDepServiceImpl implements EmpDepService {
         Integer a=empDepDao.upDep(empDepModel);
         return a;
     }
+
+    @Override
+    public Integer deleteEmp(Integer id) {
+        Integer a=empDepDao.delete(id);
+        return a;
+    }
 }

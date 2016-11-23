@@ -34,6 +34,21 @@ public class EmpDepController {
         model.addAttribute("list",list);
         return "empDepList";
     }
+
+    /**
+     * 未写完的一项  降职+下拉选
+     * @return
+     */
+//    @RequestMapping(value="/box.do")
+//    @ResponseBody
+//    public PlainResult box(Integer id){
+//        PlainResult result =new PlainResult();
+//       Integer depNum=empDepService.findNum(id);
+//        List<Integer> lt=departmentService.findLw(depNum);
+//        result.setData(lt);
+//        return result;
+//    }
+
     @RequestMapping(value="/among.do")
     public String amon(){
         return "empDepEdit";
@@ -52,8 +67,8 @@ public class EmpDepController {
     }
     @RequestMapping(value="testNum.do")
     @ResponseBody
-    public PageResult testNum (Integer depNum){
-        PageResult result = new PageResult();
+    public PlainResult testNum (Integer depNum){
+        PlainResult result = new PlainResult();
         Integer id=departmentService.findId(depNum);
         if (id==null){
             result.setMessage("没有部门信息");
@@ -63,8 +78,11 @@ public class EmpDepController {
         return result;
     }
     @RequestMapping(value="/save.do")
-    public String saveEmp(EmpDepModel empDepModel){
+    public String saveEmp(EmpDepModel empDepModel,Model model){
         Integer a=empDepService.addEmpdep(empDepModel);
+        Integer supDptnum=empDepModel.getDepNum();
+        List<Integer>lt=departmentService.findLw(supDptnum);
+        model.addAttribute("lt",lt);
         if (a!=1){
             return "hello";
         }
@@ -72,9 +90,9 @@ public class EmpDepController {
     }
     @RequestMapping(value="/promo.do")
     @ResponseBody
-    public PageResult promo(Integer id) {
+    public PlainResult promo(Integer id) {
         EmpDepModel empDepModel=new EmpDepModel();
-        PageResult result =new PageResult();
+        PlainResult result =new PlainResult();
         if (id == null) {
             result.setMessage("没有这个用户");
             return result;
@@ -92,5 +110,23 @@ public class EmpDepController {
                 return result;
             }
         }
+    }
+    @RequestMapping(value="/demo.do")
+    @ResponseBody
+    public PlainResult demo(Integer id){
+        PlainResult result=new PlainResult();
+        EmpDepModel empDepModel=new EmpDepModel();
+        return result;
+    }
+    @RequestMapping(value="/delete.do")
+    @ResponseBody
+    public PlainResult delete(Integer id){
+        PlainResult result =new PlainResult();
+        Integer a=empDepService.deleteEmp(id);
+        if (a!=1){
+            result.setMessage("false");
+        }
+        result.setMessage("success");
+        return  result;
     }
 }

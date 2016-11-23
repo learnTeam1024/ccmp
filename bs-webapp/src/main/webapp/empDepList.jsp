@@ -39,9 +39,50 @@
         });
         
     }
-//    function  demotion(id) {
-//
-//    }
+    function  deleteEm(id){
+        $.ajax({
+            url: "/empDep/delete.do",
+            type: "post",
+            data: {"id": id},
+            dataType: "json",
+            async: false,
+            success: function () {
+                $(document).click(function (e) {
+                    $(e.target).parent().parent().empty();
+                });
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        });
+    }
+    function ss(id) {
+        $.ajax({
+            url:"/empDep/box.do",
+            type:"post",
+            data:{"id":id},
+            dataType:"json",
+            async:false,
+            success:function(result){
+            },
+            error:function(result){
+                alert(result.message);
+            }
+        });
+    }
+//    setTimeout(function() {
+//        // IE
+//        if(document.all) {
+//            document.getElementById("clickMe").click();
+//        }
+//        // 其它浏览器
+//        else {
+//            var e = document.createEvent("MouseEvents");
+//            e.initEvent("click", true, true);
+//           document.getElementById("clickMe").dispatchEvent(e);
+//            alert(1);
+//        }
+//    }, 0);
 </script>
 
 <body id="emp_dep">
@@ -49,12 +90,9 @@
 <div class="box_bottom pb5 pt5 pr10" style="border-top:1px solid #dadada;">
     <div class="search_bar_btn" style="text-align:left;">
         <input type="button" onclick="location.href = '/empDep/among.do' " class="ext_btn ext_btn_success" value="添 加">
-        <%--<input type="button" onclick="loadUser()" value="查 询" class="ext_btn ext_btn_submit">--%>
-
     </div>
 </div>
 </div>
-
 <table id="dtpTable" width="100%" border="0" cellpadding="0" cellspacing="0" class="list_dpt">
     <tr>
         <th width="5%">id</th>
@@ -72,7 +110,14 @@
                 <td>${empDep.createTime}</td>
                 <td>
                     <a style="cursor: pointer" onclick="promotion(${empDep.id})">升职</a>--<a style="cursor: pointer"
-                         onclick="demotion(${empDep.id})">降职</a>--<a style="cursor: pointer" onclick="deleteDpt(${empDep.id})">删除</a>
+                         <%--onclick="demotion(${empDep.id})">降职</a>--%>
+                     <%--<a href="#" id="clickMe" onclick="ss(${empDep.id})">-</a>--%>
+                    <%--<select  name="roleRank">--%>
+                        <%--<option  value="-1"> 请选择</option>--%>
+                        <%--<option  value="1"> 1 </option>--%>
+                        <%--<option  value="2"> 2 </option>--%>
+                    <%--</select>--%>
+                    -<a style="cursor: pointer" onclick="deleteEm(${empDep.id})">删除</a>
                 </td>
             </tr>
         </c:forEach>

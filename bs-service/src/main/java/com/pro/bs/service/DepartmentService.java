@@ -49,4 +49,8 @@ public interface DepartmentService {
      * 根据部门查上级
      */
     Integer findUp(Integer dptNum);
+    /**
+     * 查询下级部门
+     */
+    List<Integer>findLw(Integer supDptnum);
 }

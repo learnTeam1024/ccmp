@@ -26,6 +26,9 @@ public interface EmpDepService {
      * 升职
      */
     Integer upNum(EmpDepModel empDepModel);
-
+    /**
+     * 删除
+     */
+    Integer deleteEmp(Integer id);
 
 }

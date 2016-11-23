@@ -49,5 +49,9 @@ public interface DepartmentDao {
      * 查询上级部门
      */
     Integer findSup (Integer dptNum);
+    /**
+     * 查询下级部门
+     */
+    List<Integer>findLow(Integer supDptnum);
 }
 
