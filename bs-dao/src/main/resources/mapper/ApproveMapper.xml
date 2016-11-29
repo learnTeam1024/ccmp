@@ -19,8 +19,8 @@
 
   <insert id="save" parameterMap="dataParam" >
       INSERT  INTO approve(people_name,approve_name,approve_brand,approve_price,
-      approve_num,create_time) VALUES (#{peopleName},
-      #{approveName},#{approveBrand},#{approvePrice},#{approveNum},now())
+      approve_num,three_check,create_time) VALUES (#{peopleName},
+      #{approveName},#{approveBrand},#{approvePrice},#{approveNum},#{threeCheck},now())
   </insert>
     <select id="refer" parameterType="String" resultMap="BaseResultMap">
         SELECT * FROM approve WHERE people_name=#{peopleName}
@@ -36,6 +36,7 @@
     </update>
     <select id="finds" resultMap="BaseResultMap" parameterType="Integer">
         SELECT * FROM approve WHERE people_name IN (SELECT user_name FROM emp_dep
-WHERE dep_num in( SELECT dpt_num FROM department WHERE sup_dpt_num=#{supDptnum}));
+WHERE dep_num in( SELECT dpt_num FROM department WHERE sup_dpt_num=#{supDptnum})
+ AND approve.first_check='等待审批');
     </select>
 </mapper>
