@@ -52,6 +52,10 @@ public interface DepartmentDao {
     /**
      * 查询下级部门
      */
-    List<Integer>findLow(Integer supDptnum);
+    Integer findLow(Integer supDptnum);
+    /**
+     * 根据名字查部门等级
+     */
+    Integer findPower(Integer dptNum);
 }
 

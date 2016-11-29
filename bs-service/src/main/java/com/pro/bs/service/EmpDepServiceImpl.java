@@ -41,4 +41,16 @@ public class EmpDepServiceImpl implements EmpDepService {
         Integer a=empDepDao.delete(id);
         return a;
     }
+
+    @Override
+    public Integer seDep(String userName) {
+        Integer depNum=empDepDao.seeDep(userName);
+        return depNum;
+    }
+
+    @Override
+    public List<String> seName(Integer depNum) {
+        List<String> list=empDepDao.seeName(depNum);
+        return list;
+    }
 }

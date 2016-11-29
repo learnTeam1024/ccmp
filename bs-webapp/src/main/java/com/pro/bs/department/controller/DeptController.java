@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/dept")
-public class deptController {
+public class DeptController {
 
     @Resource
     private DepartmentService departmentService;
@@ -68,12 +68,12 @@ public class deptController {
 
     @RequestMapping(value = "/save.do")
 
-    public String saveDepartment(int dptNum,String dptName,int supDptnum,Integer id){
-       if (id==null) {
-           Integer a = departmentService.createDpt(dptNum, dptName, supDptnum);
+    public String saveDepartment(DepartmentModel departmentModel){
+       if (departmentModel.getId()==null) {
+           Integer a = departmentService.createDpt(departmentModel);
            return  "redirect:/dept/index.do";
        }
-        departmentService.updateDpt(id,dptNum, dptName,supDptnum);
+        departmentService.updateDpt(departmentModel);
         return  "redirect:/dept/index.do";
     }
 

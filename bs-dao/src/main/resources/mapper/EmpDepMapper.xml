@@ -29,4 +29,10 @@
     <update id="delete" parameterType="Integer">
         UPDATE emp_dep SET is_delete=1 WHERE id=#{id};
     </update>
+    <select id="seeDep" resultType="Integer" parameterType="String">
+        SELECT dep_num FROM emp_dep WHERE user_name=#{userName} AND is_delete=0;
+    </select>
+    <select id="seeName" resultType="String" parameterType="Integer">
+        SELECT user_name FROM emp_dep WHERE dep_num=#{depNum} AND is_delete=0;
+    </select>
 </mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pro.bs.dao.ApproveDao">
+
+    <resultMap id="BaseResultMap" type="com.pro.bs.model.ApproveModel">
+        <result column="id" property="id"/>
+        <result column="people_name" property="peopleName"/>
+        <result column="approve_name" property="approveName"/>
+        <result column="approve_brand" property="approveBrand"/>
+        <result column="approve_price" property="approvePrice"/>
+        <result column="approve_num" property="approveNum"/>
+        <result column="first_check" property="firstCheck"/>
+        <result column="second_check" property="secondCheck"/>
+        <result column="three_check" property="threeCheck"/>
+        <result column="all_check" property="allCheck"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <parameterMap id="dataParam" type="com.pro.bs.model.ApproveModel"/>
+
+  <insert id="save" parameterMap="dataParam" >
+      INSERT  INTO approve(people_name,approve_name,approve_brand,approve_price,
+      approve_num,create_time) VALUES (#{peopleName},
+      #{approveName},#{approveBrand},#{approvePrice},#{approveNum},now())
+  </insert>
+    <select id="refer" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM approve WHERE people_name=#{peopleName}
+    </select>
+    <select id="findDep"  resultMap="BaseResultMap" parameterType="String">
+        SELECT * FROM approve WHERE people_name=#{peopleName} AND first_check='等待审批'
+    </select>
+    <update id="agree" parameterType="Integer">
+          UPDATE approve SET first_check='审批通过' WHERE id=#{id};
+    </update>
+    <update id="refuse" parameterType="Integer">
+        UPDATE approve SET first_check='审批未通过' WHERE id=#{id};
+    </update>
+    <select id="finds" resultMap="BaseResultMap" parameterType="Integer">
+        SELECT * FROM approve WHERE people_name IN (SELECT user_name FROM emp_dep
+WHERE dep_num in( SELECT dpt_num FROM department WHERE sup_dpt_num=#{supDptnum}));
+    </select>
+</mapper>

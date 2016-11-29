@@ -22,12 +22,12 @@ public interface DepartmentService {
     /**
      * 新增部门
      */
-    Integer createDpt(int dtpNum,String dptName,int supDptnum);
+    Integer createDpt(DepartmentModel departmentModel);
 
     /**
      * 更新部门信息
      */
-    void updateDpt(Integer id,int dptNum,String dptName,int supDptnum);
+    void updateDpt(DepartmentModel departmentModel);
 
     /**
      * 逻辑删除部门
@@ -52,5 +52,9 @@ public interface DepartmentService {
     /**
      * 查询下级部门
      */
-    List<Integer>findLw(Integer supDptnum);
+    Integer findLw(Integer supDptnum);
+    /**
+     * 根据名字查部门等级
+     */
+    Integer seekPower(Integer dptNum);
 }

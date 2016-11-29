@@ -91,7 +91,7 @@
                     <a href="3" id="out">&nbsp;</a>
                 </div>
                 <div class="info_center">
-                    admin
+                    ${name}
                     <span id="nt">通知</span><span><a href="#" id="notice">3</a></span>
                 </div>
             </div>
@@ -108,7 +108,7 @@
         <ul>
             <li url="/user/index.do">    用户管理</li>
             <li url="/dept/index.do">    部门管理</li>
-            <li>菜单管理</li>
+            <li url="/approve/index.do"> 菜单管理</li>
             <li url="/role/index.do">    角色管理</li>
             <li url="/empDep/index.do">  职位管理</li>
         </ul>

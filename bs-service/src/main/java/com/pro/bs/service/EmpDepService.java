@@ -30,5 +30,13 @@ public interface EmpDepService {
      * 删除
      */
     Integer deleteEmp(Integer id);
+    /**
+     * 根据名字查询部门
+     */
+    Integer seDep(String userName);
+    /**
+     * 根据部门查名字
+     */
+    List<String> seName(Integer depNum);
 
 }

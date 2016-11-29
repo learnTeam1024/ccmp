@@ -28,4 +28,12 @@ public interface EmpDepDao {
      * 逻辑删除
      */
     Integer delete(Integer id);
+    /**
+     * 根据名字查部门编号
+     */
+    Integer seeDep(String userName);
+    /**
+     * 根据部门查名字
+     */
+    List<String> seeName(Integer depNum);
 }

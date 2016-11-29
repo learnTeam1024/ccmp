@@ -17,6 +17,10 @@ public class DepartmentModel {
      */
     private String dptName;
     /**
+     * 部门等级
+     */
+    private Integer dptPower;
+    /**
      * 上级部门编号
      */
     private Integer supDptnum;
@@ -89,5 +93,13 @@ public class DepartmentModel {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public Integer getDptPower() {
+        return dptPower;
+    }
+
+    public void setDptPower(Integer dptPower) {
+        this.dptPower = dptPower;
     }
 }

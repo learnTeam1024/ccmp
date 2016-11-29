@@ -6,6 +6,7 @@
         <result column="id" property="id"/>
         <result column="dpt_num" property="dptNum"/>
         <result column="dpt_name" property="dptName"/>
+        <result column="dpt_power" property="dptPower"/>
         <result column="sup_dpt_num" property="supDptnum"/>
         <result column="is_delete" property="isDelete"/>
     </resultMap>
@@ -23,8 +24,8 @@
     </select>
     <!-- 新增部门 -->
     <insert id="cteateDpt" parameterMap="dataParam">
-        insert into department(dpt_num,dpt_name,sup_dpt_num )  values (
-        #{dptNum},#{dptName},#{supDptnum}
+        insert into department(dpt_num,dpt_name,dpt_power,sup_dpt_num )  values (
+        #{dptNum},#{dptName},#{dptPower},#{supDptnum}
         );
     </insert>
 
@@ -55,6 +56,9 @@
     </select>
     <select id="findLow" parameterType="Integer" resultType="Integer">
         SELECT dpt_num FROM department WHERE sup_dpt_num=#{supDptnum} AND is_delete=0;
+    </select>
+    <select id="findPower" parameterType="Integer" resultType="Integer">
+        SELECT dpt_power FROM  department WHERE dpt_num=#{dptNum} AND is_delete=0;
     </select>
 
 </mapper>

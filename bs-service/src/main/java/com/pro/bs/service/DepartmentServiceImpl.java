@@ -27,23 +27,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Integer createDpt(int dptNum,String dptName,int supDptnum) {
-        DepartmentModel departmentModel=new DepartmentModel();
-        departmentModel.setDptNum(dptNum);
-        departmentModel.setDptName(dptName);
-        departmentModel.setSupDptnum(supDptnum);
+    public Integer createDpt(DepartmentModel departmentModel) {
         Integer a=departmentDao.cteateDpt(departmentModel);
         return a;
 
     }
 
     @Override
-    public void updateDpt(Integer id,int dptNum,String dptName,int supDptnum) {
-        DepartmentModel departmentModel=new DepartmentModel();
-        departmentModel.setDptNum(dptNum);
-        departmentModel.setDptName(dptName);
-        departmentModel.setSupDptnum(supDptnum);
-        departmentModel.setId(id);
+    public void updateDpt(DepartmentModel departmentModel) {
         departmentDao.updateDpt(departmentModel);
 
 
@@ -80,8 +71,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Integer> findLw(Integer supDptnum) {
-        List<Integer>list=departmentDao.findLow(supDptnum);
-        return list;
+    public Integer findLw(Integer supDptnum) {
+        Integer lowNum =departmentDao.findLow(supDptnum);
+        return lowNum;
+    }
+
+    @Override
+    public Integer seekPower(Integer dptNum) {
+        Integer dptPower=departmentDao.findPower(dptNum);
+        return dptPower;
     }
 }

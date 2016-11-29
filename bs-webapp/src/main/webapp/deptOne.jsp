@@ -51,6 +51,7 @@
         <th width="5%">编号 ${departmentModel.id}</th>
         <th width="10%">部门编号</th>
         <th width="15%">部门名字</th>
+        <th width="10%">部门等级</th>
         <th width="10%">上级部门编号</th>
     </tr>
 
@@ -59,6 +60,7 @@
         <td>${departmentModel.id}</td>
         <td>${departmentModel.dptNum}</td>
         <td>${departmentModel.dptName}</td>
+        <td>${departmentModel.dptPower}</td>
         <td>${departmentModel.supDptnum}</td>
         <td>
             <a style="cursor: pointer" onclick="updateDpt(${departmentModel.id})">修改</a>|<a style="cursor: pointer" onclick="deleteDpt(${departmentModel.id})">删除</a>

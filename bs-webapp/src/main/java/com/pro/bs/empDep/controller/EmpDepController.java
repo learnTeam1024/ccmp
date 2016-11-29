@@ -81,7 +81,7 @@ public class EmpDepController {
     public String saveEmp(EmpDepModel empDepModel,Model model){
         Integer a=empDepService.addEmpdep(empDepModel);
         Integer supDptnum=empDepModel.getDepNum();
-        List<Integer>lt=departmentService.findLw(supDptnum);
+        Integer lt=departmentService.findLw(supDptnum);
         model.addAttribute("lt",lt);
         if (a!=1){
             return "hello";

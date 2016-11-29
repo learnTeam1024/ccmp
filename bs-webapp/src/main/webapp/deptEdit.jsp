@@ -40,6 +40,10 @@
                             <td><input type="text" name="dptName" class="input-text lh30" size="40"></td>
                         </tr>
                         <tr>
+                            <td class="td_right">部门 等级：</td>
+                            <td><input type="text" name="dptPower" class="input-text lh30" size="40"></td>
+                        </tr>
+                        <tr>
                             <td class="td_right">上级部门编号</td>
                             <td class="">
                                 <input  class="input-text lh30" size="40"type="text" name="supDptnum">

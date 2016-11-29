@@ -25,8 +25,8 @@
                 <div id="login_tip">
                     用户登录&nbsp;&nbsp;UserLogxin
                 </div>
-                <div><input type="tet" class="username"></div>
-                <div><input type="text" class="pwd"></div>
+                <div><input type="text" class="username" name="userName"></div>
+                <div><input type="password" class="pwd" name="userPwd"></div>
                 <div id="btn_area">
                     <input type="submit" name="submit" id="sub_btn" value="登&nbsp;&nbsp;录">&nbsp;&nbsp;
                     <input type="text" class="verify">
