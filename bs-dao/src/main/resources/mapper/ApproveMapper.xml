@@ -34,9 +34,30 @@
     <update id="refuse" parameterType="Integer">
         UPDATE approve SET first_check='审批未通过' WHERE id=#{id};
     </update>
+    <update id="agreeSecond" parameterType="Integer">
+        UPDATE approve SET second_check='审批通过' WHERE id=#{id};
+    </update>
+    <update id="refuseSecond" parameterType="Integer">
+        UPDATE approve SET second_check='审批未通过' WHERE id=#{id};
+    </update>
+    <update id="agreeThree" parameterType="Integer">
+        UPDATE approve SET three_check='审批通过' WHERE id=#{id};
+    </update>
+    <update id="refuseThree" parameterType="Integer">
+        UPDATE approve SET three_check='审批未通过' WHERE id=#{id};
+    </update>
     <select id="finds" resultMap="BaseResultMap" parameterType="Integer">
         SELECT * FROM approve WHERE people_name IN (SELECT user_name FROM emp_dep
 WHERE dep_num in( SELECT dpt_num FROM department WHERE sup_dpt_num=#{supDptnum})
  AND approve.first_check='等待审批');
     </select>
+    <select id="findSec" resultMap="BaseResultMap">
+        SELECT * FROM  approve WHERE first_check='审批通过' AND second_check='等待审批';
+    </select>
+    <select id="findThree" resultMap="BaseResultMap">
+        SELECT * FROM (SELECT * FROM  approve WHERE
+  first_check='审批通过' AND second_check='审批通过')t  WHERE  three_check='等待审批';
+    </select>
+
+
 </mapper>

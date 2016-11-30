@@ -55,15 +55,34 @@ public class ApproveController {
     public  String finde(Model model,HttpSession session){
         String name =(String)session.getAttribute("name");
         Integer supNum=empDepService.seDep(name);
-        List<ApproveModel>lltt=approveService.findDu(supNum);
-        model.addAttribute("lltt",lltt);
+        if (departmentService.findCks(supNum).equals("财务主管")){
+            List<ApproveModel>lltt=approveService.findThr();
+            model.addAttribute("lltt",lltt);
+        }
+        else if (departmentService.findCks(supNum).equals("财务会计")){
+            List<ApproveModel>lltt=approveService.findSeco();
+            model.addAttribute("lltt", lltt);
+        }else {
+            List<ApproveModel> lltt = approveService.findDu(supNum);
+            model.addAttribute("lltt", lltt);
+        }
         return  "depList";
     }
     @RequestMapping(value="/agree.do")
     @ResponseBody
-    public PlainResult agg(Integer id){
+    public PlainResult agg(Integer id,HttpSession session){
         PlainResult result=new PlainResult();
-        Integer a=approveService.agr(id);
+        Integer dptNum=empDepService.seDep((String) session.getAttribute("name"));
+        String dptName=departmentService.findCks(dptNum);
+        Integer a;
+        if (dptName.equals("财务主管")){
+            a=approveService.agreeThr(id);
+        }
+        else if (dptName.equals("财务会计")){
+            a=approveService.agreeSec(id);
+        }else {
+            a = approveService.agr(id);
+        }
         if (a==1){
             result.setMessage("审批成功");
             return  result;
@@ -73,9 +92,19 @@ public class ApproveController {
     }
     @RequestMapping(value="/refuse.do")
     @ResponseBody
-    public PlainResult ref(Integer id){
+    public PlainResult ref(Integer id,HttpSession session){
         PlainResult result=new PlainResult();
-        Integer a=approveService.refu(id);
+        Integer dptNum=empDepService.seDep((String) session.getAttribute("name"));
+        String dptName=departmentService.findCks(dptNum);
+        Integer a;
+        if (dptName.equals("财务主管")){
+            a=approveService.refuseThr(id);
+        }
+        else if (dptName.equals("财务会计")){
+            a=approveService.refuseSec(id);
+        }else {
+            a=approveService.refu(id);
+        }
         if (a==1){
             result.setMessage("审批成功");
             return  result;

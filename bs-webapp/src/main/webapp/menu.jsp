@@ -20,6 +20,7 @@
 </head>
 <body>
 <div class="box_center">
+<c:if test="${dptPower>2}">
     <form action="/applyEdit.jsp" class="jqtransform" >
         <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
@@ -41,6 +42,7 @@
             </tr>
         </table>
     </form>
+    </c:if>
 
     <form action="/hello.jsp" class="jqtransform" >
         <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">

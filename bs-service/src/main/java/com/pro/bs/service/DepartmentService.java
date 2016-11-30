@@ -57,4 +57,8 @@ public interface DepartmentService {
      * 根据名字查部门等级
      */
     Integer seekPower(Integer dptNum);
+    /**
+     * 查部门名字
+     */
+    String findCks (Integer dptNum);
 }

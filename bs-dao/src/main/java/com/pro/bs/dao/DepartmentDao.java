@@ -57,5 +57,9 @@ public interface DepartmentDao {
      * 根据名字查部门等级
      */
     Integer findPower(Integer dptNum);
+    /**
+     * 查部门名字
+     */
+    String findCk(Integer dptNum);
 }
 

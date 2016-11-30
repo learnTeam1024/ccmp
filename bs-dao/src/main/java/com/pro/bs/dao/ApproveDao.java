@@ -29,7 +29,31 @@ public interface ApproveDao {
      */
     Integer refuse(Integer id);
     /**
+     * 财务会计同意
+     */
+    Integer agreeSecond(Integer id);
+    /**
+     * 财务会计不同意
+     */
+    Integer refuseSecond(Integer id);
+    /**
+     * 财务主管同意
+     */
+    Integer agreeThree(Integer id);
+    /**
+     * 财务主管不同意
+     */
+    Integer refuseThree(Integer id);
+    /**
      * 部门领导待审批列表
      */
     List<ApproveModel>finds(Integer supDptnum);
+    /**
+     * 财务专员待审批列表
+     */
+    List<ApproveModel>findSec();
+    /**
+     * 财务主管待审批列表
+     */
+    List<ApproveModel>findThree();
 }

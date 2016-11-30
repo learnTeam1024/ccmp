@@ -81,4 +81,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         Integer dptPower=departmentDao.findPower(dptNum);
         return dptPower;
     }
+
+    @Override
+    public String findCks(Integer dptNum) {
+        String dptName=departmentDao.findCk(dptNum);
+        return dptName;
+    }
 }

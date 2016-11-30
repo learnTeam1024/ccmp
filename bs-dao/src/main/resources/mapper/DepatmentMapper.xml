@@ -60,5 +60,8 @@
     <select id="findPower" parameterType="Integer" resultType="Integer">
         SELECT dpt_power FROM  department WHERE dpt_num=#{dptNum} AND is_delete=0;
     </select>
+    <select id="findCk" resultType="String" parameterType="Integer">
+        SELECT  dpt_name FROM department WHERE dpt_num=#{dptNum} AND is_delete=0;
+    </select>
 
 </mapper>

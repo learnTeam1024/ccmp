@@ -69,7 +69,6 @@
         <th >物品种类</th>
         <th >物品价格</th>
         <th >物品数量</th>
-        <th >部门领导审批</th>
         <th >创建时间</th>
 
     </tr>
@@ -82,7 +81,6 @@
                 <td>${appro.approveBrand}</td>
                 <td>${appro.approvePrice}</td>
                 <td>${appro.approveNum}</td>
-                <td>${appro.firstCheck}</td>
                 <td>${appro.createTime}</td>
                 <td>
                     <a style="cursor: pointer" onclick="agree(${appro.id})">同意</a>|<a style="cursor: pointer" onclick="refuse(${appro.id})">不同意</a>

@@ -44,8 +44,44 @@ public class ApproveServiceImpl implements  ApproveService {
     }
 
     @Override
+    public Integer agreeSec(Integer id) {
+        Integer a=approveDao.agreeSecond(id);
+        return a;
+    }
+
+    @Override
+    public Integer refuseSec(Integer id) {
+        Integer a=approveDao.refuseSecond(id);
+        return a;
+    }
+
+    @Override
+    public Integer agreeThr(Integer id) {
+        Integer a=approveDao.agreeThree(id);
+        return a;
+    }
+
+    @Override
+    public Integer refuseThr(Integer id) {
+        Integer a=approveDao.refuseThree(id);
+        return a;
+    }
+
+    @Override
     public List<ApproveModel> findDu(Integer supDptnum) {
         List<ApproveModel>list=approveDao.finds(supDptnum);
+        return list;
+    }
+
+    @Override
+    public List<ApproveModel> findSeco() {
+        List<ApproveModel>list=approveDao.findSec();
+        return list;
+    }
+
+    @Override
+    public List<ApproveModel> findThr() {
+        List<ApproveModel> list=approveDao.findThree();
         return list;
     }
 }
