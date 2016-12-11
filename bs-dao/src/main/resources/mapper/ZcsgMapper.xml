@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pro.bs.dao.ZcsgDao">
+    <resultMap id="BaseResultMap" type="com.pro.bs.model.ZcsgModel"/>
+    <parameterMap id="dataParam" type="com.pro.bs.model.ZcsgModel"/>
+    <select id="findAll" resultMap="BaseResultMap" >
+        SELECT * FROM info_zcsg;
+    </select>
+    <insert id="add" parameterMap="dataParam">
+    INSERT  INTO  info_zcsg (assetnm,oper,dept,dt,ammount,money,custos,meno,state)
+    VALUES (#{assetnm},#{oper},#{dept},now(),#{ammount},#{money},#{custos},#{meno},1);
+    </insert>
+
+</mapper>

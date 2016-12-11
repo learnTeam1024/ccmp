@@ -48,12 +48,7 @@
                 <td>${appro.approveNum}</td>
                 <td>${appro.firstCheck}</td>
                 <td>${appro.secondCheck}</td>
-                <c:if test="${appro.approvePrice*appro.approveNum>1000}">
-                    <td>${appro.threeCheck}</td>
-                </c:if>
-                <c:if test="${appro.approvePrice*appro.approveNum<=1000}">
-                    <td>审批通过</td>
-                </c:if>
+                <td>${appro.threeCheck}</td>
                 <td>${appro.createTime}</td>
                 <td>
                     <a style="cursor: pointer" onclick="updateappro(${appro.id})">修改</a>|<a style="cursor: pointer" onclick="deleteappro(${appro.id})">删除</a>

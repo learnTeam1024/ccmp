@@ -113,4 +113,10 @@ public class ApproveController {
         return  result;
 
     }
+    @RequestMapping(value="/si.do")
+    public  String alls(String ss,Model model){
+        String cc=ss;
+        model.addAttribute("cc",cc);
+        return "hello";
+    }
 }

@@ -73,7 +73,6 @@
         <div class="box_border">
             <div class="box_top"><b class="pl15">表单</b></div>
             <div class="box_center">
-                <%--<form  class="jqtransform" id="test" >--%>
                     <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
                         <input type="hidden" name="id" value="${id}">
                         <tr>
@@ -97,7 +96,6 @@
                             </td>
                         </tr>
                     </table>
-                <%--</form>--%>
             </div>
         </div>
     </div>

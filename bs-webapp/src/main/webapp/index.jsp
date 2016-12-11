@@ -109,12 +109,13 @@
             <li url="/user/index.do">    用户管理</li>
             <li url="/dept/index.do">    部门管理</li>
             <li url="/approve/index.do"> 菜单管理</li>
+            <li url="/function.jsp">     功能管理</li>
             <li url="/role/index.do">    角色管理</li>
             <li url="/empDep/index.do">  职位管理</li>
         </ul>
         <h3>仓库管理</h3>
         <ul>
-            <li>固定资产</li>
+            <li url="/test.jsp">固定资产</li>
         </ul>
     </div>
 </div>
