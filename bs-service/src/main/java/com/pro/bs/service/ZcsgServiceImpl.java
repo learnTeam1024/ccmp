@@ -23,4 +23,28 @@ public class ZcsgServiceImpl implements ZcsgService {
         Integer a=zcsgDao.add(zcsgModel);
         return a;
     }
+
+    @Override
+    public Integer upOne(ZcsgModel zcsgModel) {
+        Integer a=zcsgDao.update(zcsgModel);
+        return a;
+    }
+
+    @Override
+    public ZcsgModel findOnee(Integer id) {
+        ZcsgModel zcsgModel=zcsgDao.findOne(id);
+        return zcsgModel;
+    }
+
+    @Override
+    public Integer delete(Integer id) {
+        Integer a=zcsgDao.dele(id);
+        return a;
+    }
+
+    @Override
+    public List<ZcsgModel> findByAssetnm(String assetnm) {
+        List<ZcsgModel>list=zcsgDao.findByass(assetnm);
+        return list;
+    }
 }

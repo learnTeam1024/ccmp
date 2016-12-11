@@ -25,46 +25,46 @@
         <div class="box_border">
             <div class="box_top"><b class="pl15">表单</b></div>
             <div class="box_center">
-                <form action="/zcsg/save.do" class="jqtransform"  method="post" >
+                <form action="/zcsg/save.do?id="+${zcsg.id} class="jqtransform"  >
                     <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="td_right">资产名称：</td>
                             <td class="">
-                                <input type="text" name="assetnm" class="input-text lh30" size="40">
+                                <input type="text" name="assetnm" class="input-text lh30" size="40"value=${zcsg.assetnm}>
                             </td>
                         </tr>
                         <tr>
                             <td class="td_right">申请人：</td>
-                            <td><input type="text" name="oper" class="input-text lh30" size="40"></td>
+                            <td><input type="text" name="oper" class="input-text lh30" size="40"value=${zcsg.oper}></td>
                         </tr>
                         <tr>
                             <td class="td_right">使用人：</td>
                             <td class="">
-                                <input  class="input-text lh30" size="40"type="text" name="custos">
+                                <input  class="input-text lh30" size="40"type="text" name="custos" value=${zcsg.custos}>
                             </td>
                         </tr>
                         <tr>
                             <td class="td_right">部 门：</td>
                             <td class="">
-                                <input  class="input-text lh30" size="40"type="text" name="dept">
+                                <input  class="input-text lh30" size="40"type="text" name="dept"value=${zcsg.dept}>
                             </td>
                         </tr>
                         <tr>
                             <td class="td_right">数 量：</td>
                             <td class="">
-                                <input  class="input-text lh30" size="40"type="text" name="ammount">
+                                <input  class="input-text lh30" size="40"type="text" name="ammount" value=${zcsg.ammount}>
                             </td>
                         </tr>
                         <tr>
                             <td class="td_right">金 额：</td>
                             <td class="">
-                                <input  class="input-text lh30" size="40"type="text" name="money">
+                                <input  class="input-text lh30" size="40"type="text" name="money"value=${zcsg.money}>
                             </td>
                         </tr>
                         <tr>
                             <td class="td_right">申请理由：</td>
                             <td class="">
-                                <input  class="input-text lh30" size="40"type="text" name="meno" size="200">
+                                <input  class="input-text lh30" size="40"type="text" name="meno" size="200"value=${zcsg.meno}>
                             </td>
                         </tr>
 

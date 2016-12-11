@@ -8,7 +8,19 @@
     </select>
     <insert id="add" parameterMap="dataParam">
     INSERT  INTO  info_zcsg (assetnm,oper,dept,dt,ammount,money,custos,meno,state)
-    VALUES (#{assetnm},#{oper},#{dept},now(),#{ammount},#{money},#{custos},#{meno},1);
+    VALUES (#{assetnm},#{oper},#{dept},now(),#{ammount},#{money},#{custos},#{meno},"待审(部门领导)");
     </insert>
-
+    <update id="update" parameterMap="dataParam">
+        UPDATE info_zcsg SET assetnm=#{assetnm},oper=#{oper},dept=#{dept},dt=now(),ammount=#{
+        ammount},money=#{money},custos=#{custos},meno=#{meno} WHERE id=#{id};
+    </update>
+    <select id="findOne" parameterType="Integer" resultMap="BaseResultMap">
+        SELECT * FROM info_zcsg WHERE  id=#{id};
+    </select>
+    <delete id="dele" parameterType="Integer">
+        DELETE  FROM info_zcsg WHERE id=#{id};
+    </delete>
+    <select id="findByass" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM info_zcsg WHERE assetnm=#{assetnm};
+    </select>
 </mapper>

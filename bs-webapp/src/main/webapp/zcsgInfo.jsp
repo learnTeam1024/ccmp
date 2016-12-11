@@ -21,11 +21,28 @@
 </head>
 <script>
     function update() {
-        var ss=$('input:radio:checked').parent().next().text();
-        location.href="/approve/si.do?ss="+ss;
+        var id=$('input:radio:checked').parent().next().text();
+        location.href="/zcsg/findOne.do?id="+id;
     }
     function  add() {
         location.href="/zcsgEdit.jsp";
+    }
+    function  deletee() {
+        var id=$('input:radio:checked').parent().next().text();
+        $.ajax({
+            url:"/zcsg/delete.do",
+            type:"post",
+            data:{"id":id},
+            dataType:"json",
+            async:false,
+            success:function(result) {
+                alert(result.message);
+                    $('input:radio:checked').parent().parent().empty();
+            },
+            error:function (result) {
+                alert(result.message);
+            }
+        })
     }
 </script>
 <body>
@@ -33,8 +50,17 @@
     <tr>
         <td width="100%">
     <tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">
-    <td align="left">资产列表</td>  <a size="2" onclick="add()" >资产申购</a> <a size="2" onclick="update()">修改</a>
+    <td align="left">资产列表</td>  <a size="2" onclick="add()" >资产申购</a>--<a size="2" onclick="update()">修改</a>--<a size="2" onclick="deletee()">删除</a>
     </tr>
+    <div>
+        <form action="/zcsg/findByAss.do" class="jqtransform">
+            <tr>
+                资产名称<input type="text" name="assetnm">
+            </tr>
+            <input type="submit" value="查询">
+        </form>
+    </div>
+
             <table border="0" cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3;">
                 <tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">
                     <td><font size="2"></font></td>
@@ -50,22 +76,25 @@
                 </tr>
 
                 <c:if test="${list.size() > 0}">
-                    <c:forEach items="${list}" var="acsg" >
+                    <c:forEach items="${list}" var="zcsg" >
                         <tr class="tr">
                             <td><input type="radio" name="si" value="0"></td>
-                            <td  style="display:none"><font size="2">${acsg.id}</font></td>
-                            <td  align="center"><font size="2">${acsg.assetnm}</font></td>
-                            <td align="center"><font size="2">${acsg.ammount}</font></td>
-                            <td align="center"><font size="2">${acsg.money}</font></td>
-                            <td align="center"><font size="2">${acsg.oper}</font></td>
-                            <td align="center"><font size="2">${acsg.custos}</font></td>
-                            <td align="center"><font size="2">${acsg.meno}</font></td>
-                            <td align="center"><font size="2">${acsg.dept}</font></td>
-                            <td align="center"><font size="2">${acsg.dt}</font></td>
+                            <td  style="display:none"><font size="2">${zcsg.id}</font></td>
+                            <td  align="center"><font size="2">${zcsg.assetnm}</font></td>
+                            <td align="center"><font size="2">${zcsg.ammount}</font></td>
+                            <td align="center"><font size="2">${zcsg.money}</font></td>
+                            <td align="center"><font size="2">${zcsg.oper}</font></td>
+                            <td align="center"><font size="2">${zcsg.custos}</font></td>
+                            <td align="center"><font size="2">${zcsg.meno}</font></td>
+                            <td align="center"><font size="2">${zcsg.dept}</font></td>
+                            <td align="center"><font size="2">${zcsg.dt}</font></td>
                         </tr>
                     </c:forEach>
                 </c:if>
             </table>
+    <c:if test="${list.size() <=0}">
+        没有此信息
+    </c:if>
 
         </td>
     </tr>

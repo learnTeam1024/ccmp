@@ -10,4 +10,8 @@ import java.util.List;
 public interface ZcsgService {
     List<ZcsgModel> finds();
     Integer addOne(ZcsgModel zcsgModel);
+    Integer upOne(ZcsgModel zcsgModel);
+    ZcsgModel findOnee(Integer id);
+    Integer delete(Integer id);
+    List<ZcsgModel>findByAssetnm(String assetnm);
 }
