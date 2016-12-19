@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pro.bs.dao.TuserDao">
+
+    <resultMap id="BaseResultMap" type="com.pro.bs.model.TuserModel">
+        <result column="user_id" property="id"/>
+        <result column="staff_id" property="staffId"/>
+        <result column="pwd" property="pwd"/>
+        <result column="real_name" property="realName"/>
+        <result column="mobile" property="mobile"/>
+        <result column="email" property="email"/>
+        <result column="reg_date" property="regDate"/>
+        <result column="depart_cd" property="departCd"/>
+        <result column="duty" property="duty"/>
+        <result column="pubMobile" property="pubMobile"/>
+        <result column="pubCornet" property="pubCornet"/>
+        <result column="controlcd" property="controlcd"/>
+        <result column="telCornet" property="telCornet"/>
+        <result column="isprincipal" property="isprincipal"/>
+        <result column="memo" property="memo"/>
+    </resultMap>
+    <parameterMap id="dataParam" type="com.pro.bs.model.TuserModel"/>
+    <select id="finds" resultMap="BaseResultMap">
+        SELECT * FROM  t_user;
+    </select>
+    <insert id="add" parameterMap="dataParam" >
+        INSERT  INTO t_user(staff_id,real_name,pwd,depart_cd,tel,mobile,email,telCornet,
+        pubCornet,pubMobile,duty,controlcd,reg_date,memo,isprincipal) VALUES (#{staffId},#{realName},#{pwd},
+  #{departCd},#{tel},#{mobile},#{email},#{telCornet},#{pubCornet},#{pubMobile},#{duty},
+  #{controlcd},now(),#{memo},#{isprincipal});
+    </insert>
+    <update id="update" parameterMap="dataParam">
+        UPDATE t_user SET staff_id=#{staffId},real_name=#{realName},depart_cd=#{departCd},tel=#{tel},
+        mobile=#{mobile},email=#{email},telCornet=#{telCornet},pubCornet=#{pubCornet},pubMobile=#{pubMobile},
+        duty=#{duty},controlcd=#{controlcd},memo=#{memo},isprincipal=#{isprincipal} WHERE user_id=#{id};
+    </update>
+    <select id="find" parameterType="Integer" resultMap="BaseResultMap">
+        SELECT * FROM t_user WHERE user_id=#{id};
+    </select>
+    <delete id="delete" parameterType="Integer">
+         DELETE  FROM t_user WHERE user_id=#{id};
+    </delete>
+    <select id="findc" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM t_user WHERE  staff_id=#{staffId};
+    </select>
+
+
+
+
+
+</mapper>

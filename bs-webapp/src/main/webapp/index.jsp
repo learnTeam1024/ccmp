@@ -104,7 +104,7 @@
 </div>
 <div class="side">
     <div id="navigate" class="sideMenu" style="margin:0 auto">
-        <h3>系统管理</h3>
+        <h3>练习管理</h3>
         <ul>
             <li url="/user/index.do">    用户管理</li>
             <li url="/dept/index.do">    部门管理</li>
@@ -113,9 +113,13 @@
             <li url="/role/index.do">    角色管理</li>
             <li url="/empDep/index.do">  职位管理</li>
         </ul>
-        <h3>仓库管理</h3>
+        <h3>仓系统管理</h3>
         <ul>
-            <li url="/test.jsp">固定资产</li>
+            <li url="/tuser/index.do">员工管理</li>
+            <li url="/test.jsp">部门维护</li>
+            <li url="/test.jsp">角色维护</li>
+            <li url="/test.jsp">菜单维护</li>
+            <li url="/test.jsp">工作组维护</li>
         </ul>
     </div>
 </div>
